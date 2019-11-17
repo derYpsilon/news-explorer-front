@@ -6,7 +6,8 @@
   "scripts": {
     "build": "rimraf dist && webpack --mode production",
     "dev": "NODE_ENV=development webpack-dev-server --mode development --open --watch",
-    "deploy": "scp -r ./dist/* ypsilon@84.201.175.8:/home/ypsilon/news-frontend"
+    "deploy": "scp -r ./dist/* ypsilon@84.201.175.8:/home/ypsilon/news-frontend",
+    "pages": "gh-pages -d dist"
   },
   "author": "Alexey Tsitskun",
   "license": "ISC",
@@ -30,13 +31,13 @@
     "webpack": "^4.39.3",
     "webpack-cli": "^3.3.7",
     "webpack-dev-server": "^3.8.0",
-    "webpack-md5-hash": "0.0.6"
+    "webpack-md5-hash": "0.0.6",
+    "gh-pages": "^2.1.1"
   },
   "dependencies": {
     "babel-polyfill": "^6.26.0",
     "core-js": "^3.1.4",
     "dotenv": "^8.2.0",
-    "express": "^4.17.1",
     "validator": "^11.1.0"
   },
   "repository": {

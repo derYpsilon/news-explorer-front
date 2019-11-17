@@ -6,10 +6,16 @@ const webpack = require("webpack")
 
 
 module.exports = {
-  entry: { main: './src/index.js' },
+  entry: {
+    main: './src/index.js',
+    about: './src/about/index.js',
+    links: './src/links/index.js'
+  },
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: '[name].[chunkhash].js'
+    filename: (chunkData) => {
+      return chunkData.chunk.name === 'main' ? '[name].[hash].js' : '[name]/[name].[hash].js'
+    }
   },
   module: {
     rules: [
@@ -66,6 +72,18 @@ module.exports = {
       hash: true,
       template: './src/index.html',
       filename: 'index.html'
+    }),
+    new HtmlWebpackPlugin({
+      inject: false,
+      hash: true,
+      template: './src/links/index.html',
+      filename: 'links/index.html'
+    }),
+    new HtmlWebpackPlugin({
+      inject: false,
+      hash: true,
+      template: './src/about/index.html',
+      filename: 'about/index.html'
     }),
     new WebpackMd5Hash(),
     new webpack.DefinePlugin({

@@ -1,36 +1,37 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const WebpackMd5Hash = require('webpack-md5-hash')
-const MiniCssExtractPlugin = require("mini-css-extract-plugin")
-const webpack = require("webpack")
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const webpack = require('webpack')
 
 
 module.exports = {
   entry: {
     main: './src/index.js',
     about: './src/about/index.js',
-    links: './src/links/index.js'
+    links: './src/links/index.js',
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
+    // eslint-disable-next-line arrow-body-style
     filename: (chunkData) => {
       return chunkData.chunk.name === 'main' ? '[name].[hash].js' : '[name]/[name].[hash].js'
-    }
+    },
   },
   module: {
     rules: [
       {
         test: /\.js$/,
-        use: { loader: "babel-loader" },
-        exclude: /node_modules/
+        use: { loader: 'babel-loader' },
+        exclude: /node_modules/,
       },
       {
         test: /\.css$/,
-        use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader']
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader'],
       },
       {
         test: /\.(eot|ttf|woff|woff2)$/,
-        loader: 'file-loader?name=./vendor/[name].[ext]'
+        loader: 'file-loader?name=./vendor/[name].[ext]',
       },
       {
         test: /\.(gif|png|jpe?g|svg)$/i,
@@ -41,53 +42,53 @@ module.exports = {
             options: {
               mozjpeg: {
                 progressive: true,
-                quality: 65
+                quality: 65,
               },
               optipng: {
                 enabled: false,
               },
               pngquant: {
                 quality: '65-90',
-                speed: 4
+                speed: 4,
               },
               gifsicle: {
                 interlaced: false,
               },
               webp: {
-                quality: 75
-              }
-            }
+                quality: 75,
+              },
+            },
           },
         ],
 
-      }
-    ]
+      },
+    ],
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: 'style.[contenthash].css'
+      filename: 'style.[contenthash].css',
     }),
     new HtmlWebpackPlugin({
       inject: false,
       hash: true,
       template: './src/index.html',
-      filename: 'index.html'
+      filename: 'index.html',
     }),
     new HtmlWebpackPlugin({
       inject: false,
       hash: true,
       template: './src/links/index.html',
-      filename: 'links/index.html'
+      filename: 'links/index.html',
     }),
     new HtmlWebpackPlugin({
       inject: false,
       hash: true,
       template: './src/about/index.html',
-      filename: 'about/index.html'
+      filename: 'about/index.html',
     }),
     new WebpackMd5Hash(),
     new webpack.DefinePlugin({
-      NODE_ENV: JSON.stringify(process.env.NODE_ENV)
-    })
-  ]
+      NODE_ENV: JSON.stringify(process.env.NODE_ENV),
+    }),
+  ],
 }

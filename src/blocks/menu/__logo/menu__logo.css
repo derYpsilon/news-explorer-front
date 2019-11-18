@@ -1,0 +1,11 @@
+.menu__logo {
+  color: white;
+  text-decoration: none;
+  font-family: "Roboto Slab";
+  font-size: 1.25rem;
+  font-weight: 900;
+  line-height: 120%;
+  /* min-width: 200px; */
+  margin-top: 30px;
+  margin-bottom: 30px;
+}

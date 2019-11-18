@@ -42,20 +42,20 @@ module.exports = {
             options: {
               mozjpeg: {
                 progressive: true,
-                quality: 65,
+                quality: 85,
               },
               optipng: {
                 enabled: false,
               },
               pngquant: {
-                quality: '65-90',
+                quality: 90,
                 speed: 4,
               },
               gifsicle: {
                 interlaced: false,
               },
               webp: {
-                quality: 75,
+                quality: 85,
               },
             },
           },

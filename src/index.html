@@ -3,14 +3,32 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Webpack</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="author" content="Alexey Tsitskun">
+  <meta name="description" content="Diploma project / Articles saver">
+  <title>News Explorer</title>
   <link rel="stylesheet" href="<%=htmlWebpackPlugin.files.chunks.main.css %>">
+  <link rel="icon" href="<%= require('./images/favicon.png')%>" type="image/png">
 </head>
 
 <body>
-  <h1>Hello</h1>
-  <a href="./about/">About</a> | <a href="./links/">Links</a>
-  <p>So, this is the test page of webpack</p>
+  <div class="root">
+    <header class="header">
+      <nav class="menu">
+        <a href="./" class="menu__logo">News Explorer</a>
+        <ul class="menu__items-list">
+          <li class="menu__items-single-item menu__items-single-item_selected"><a href="#"
+              class="menu__link menu__link_selected">Главная</a></li>
+          <li class="menu__items-single-item"><a href="#" class="menu__link">О проекте</a></li>
+          <li class="menu__items-single-item"><a href="#" class="menu__link">Сохраненные статьи</a></li>
+          <li class="menu__items-single-item"><a href="#" class="menu__link menu__link_not-logged">Авторизоваться</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+  </div>
   <script src="<%= htmlWebpackPlugin.files.chunks.main.entry %>"></script>
 </body>
 

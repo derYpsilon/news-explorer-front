@@ -1,0 +1,27 @@
+@import url(_selected/menu__items_selected.css);
+
+.menu__items-list {
+  display: flex;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menu__items-single-item {
+  display: flex;
+  height: 100%;
+  margin-right: 32px;
+  box-sizing: border-box;
+  border-top: 3px rgba(255, 255, 255, 0) solid;
+  border-bottom: 3px rgba(255, 255, 255, 0) solid;
+}
+
+.menu__items-single-item:last-of-type {
+  margin-right: 0;
+}
+
+@media screen and (max-width: 1023px) {
+  .menu__items-single-item {
+    margin-right: 16px;
+  }
+}

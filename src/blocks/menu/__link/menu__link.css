@@ -1,0 +1,20 @@
+@import url(_selected/menu__link_selected.css);
+@import url(_not-logged/menu__link_not-logged.css);
+
+.menu__link {
+  align-self: center;
+  font-size: 1.12rem;
+  font-weight: 900;
+  text-decoration: none;
+  color: #b6bcbf;
+}
+
+.menu__link:hover {
+  color: white;
+}
+
+@media screen and (max-width: 1023px) {
+  .menu {
+    font-size: 1rem;
+  }
+}

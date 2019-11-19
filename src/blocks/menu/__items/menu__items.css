@@ -5,6 +5,7 @@
   list-style-type: none;
   margin: 0;
   padding: 0;
+  z-index: 10;
 }
 
 .menu__items-single-item {
@@ -24,4 +25,26 @@
   .menu__items-single-item {
     margin-right: 16px;
   }
+  .menu__items-list {
+    display: block;
+    display: flex;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .menu__items-list {
+    position: absolute;
+    top: 56px;
+    left: 0px;
+    width: 100%;
+    display: none;
+    background-color: #1a1b22;
+  }
+  .menu__items-single-item {
+    margin: 30px 16px 30px 16px;
+  }
+}
+
+.menu__items-list_show {
+  display: block;
 }

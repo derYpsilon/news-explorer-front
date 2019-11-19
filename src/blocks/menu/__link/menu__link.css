@@ -1,5 +1,6 @@
 @import url(_selected/menu__link_selected.css);
 @import url(_not-logged/menu__link_not-logged.css);
+@import url(_logged/menu__link_logged.css);
 
 .menu__link {
   align-self: center;
@@ -14,7 +15,13 @@
 }
 
 @media screen and (max-width: 1023px) {
-  .menu {
+  .menu__link {
     font-size: 1rem;
+  }
+}
+
+@media screen and (max-width: 1023px) {
+  .menu__link {
+    font-size: 1.12rem;
   }
 }

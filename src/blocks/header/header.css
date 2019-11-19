@@ -1,4 +1,5 @@
 .header {
+  position: relative;
   min-height: 576px;
   background-repeat: no-repeat;
   background-size: cover;

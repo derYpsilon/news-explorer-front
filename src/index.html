@@ -16,16 +16,22 @@
   <div class="root">
     <header class="header">
       <nav class="menu">
+
         <a href="./" class="menu__logo">News Explorer</a>
+        <div class="menu__mobile"></div>
         <ul class="menu__items-list">
           <li class="menu__items-single-item menu__items-single-item_selected"><a href="#"
               class="menu__link menu__link_selected">Главная</a></li>
           <li class="menu__items-single-item"><a href="#" class="menu__link">О проекте</a></li>
           <li class="menu__items-single-item"><a href="#" class="menu__link">Сохраненные статьи</a></li>
-          <li class="menu__items-single-item"><a href="#" class="menu__link menu__link_not-logged">Авторизоваться</a>
+          <li class="menu__items-single-item">
+            <a href="#" class="menu__link menu__link_logged">
+              Васисуалий <div class="menu__logout"></div>
+            </a>
           </li>
         </ul>
       </nav>
+      <div class="menu__mobile-overlay"></div>
     </header>
 
   </div>

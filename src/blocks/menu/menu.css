@@ -15,6 +15,11 @@
   z-index: 10;
 }
 
+.menu_on-top {
+  z-index: 101;
+  background-color: #1a1b22;
+}
+
 @media screen and (max-width: 1023px) {
   .menu {
     padding: 0 40px 0 40px;

@@ -3,7 +3,6 @@
 @import url(__link/menu__link.css);
 @import url(__logout/menu__logout.css);
 @import url(__mobile/menu__mobile.css);
-@import url(__mobile-overlay/menu__mobile-overlay.css);
 
 .menu {
   height: 80px;

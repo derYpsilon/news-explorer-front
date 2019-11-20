@@ -43,10 +43,12 @@
       </div>
     </header>
     <section class=preloader>
+      <!-- Чтобы скрыть прелоадер добавьте класс preloader__message_hide -->
       <div class="preloader__message" id="preloader-searching">
         <i class="circle-preloader"></i>
         <h5 class="preloader__subtitle">Идет поиск новостей...</h5>
       </div>
+      <!-- Чтобы показать ошибку поиска уберите класс preloader__message_hide -->
       <div class="preloader__message preloader__message_hide" id="preloader-not-found">
         <img class="preloader__icon" src="<%= require('./images/not-found.svg')%>">
         <h4 class="preloader__title">Ничего не найдено</h4>
@@ -56,7 +58,7 @@
     <section class="results">
       <h3 class="results__title">Результаты поиска</h3>
       <div class="results__news">
-        <div style="width: 100%; height: 100px; background-color: blueviolet;">aaaa</div>
+        <div style="width: 100%; height: 100px; border-radius: 10px; background-color: blueviolet;">aaaa</div>
         <div style="width: 100%; height: 100px; background-color: blueviolet;">aaaa</div>
         <div style="width: 100%; height: 100px; background-color: blueviolet;">aaaa</div>
         <div style="width: 100%; height: 100px; background-color: blueviolet;">aaaa</div>

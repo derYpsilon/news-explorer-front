@@ -1,5 +1,5 @@
 .button.results__button {
-  margin: 64px auto 80px auto;
+  margin: 64px auto 0 auto;
   background-color: white;
   color: black;
   font-size: 1.12rem;
@@ -8,14 +8,14 @@
 
 @media screen and (max-width: 1023px) {
   .button.results__button {
-    margin: 32px auto 40px auto;
+    margin: 32px auto 0 auto;
     padding: 15px 40px 15px 40px;
   }
 }
 
 @media screen and (max-width: 767px) {
   .button.results__button {
-    margin: 15px 16px 32px 16px;
+    margin: 15px 16px 0 16px;
     padding: 15px 0px 15px 0px;
     width: calc(100% - 32px);
     justify-content: center;

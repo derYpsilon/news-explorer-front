@@ -18,7 +18,6 @@ const menuOperator = new Component(
   document.querySelector('.menu__mobile'),
   {
     click: () => {
-      overlay.show()
       menu.click()
     },
   },

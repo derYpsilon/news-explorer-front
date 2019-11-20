@@ -31,8 +31,18 @@
           </li>
         </ul>
       </nav>
+      <div class=header__title-wrapper>
+        <h1 class="header__title">Что в мире творится?</h1>
+        <h3 class="header__subtitle">Находите самые свежие статьи на любую тему
+          и сохраняйте в своём личном кабинете.
+        </h3>
+        <form novalidate class="header__form" name="news-finder" method="POST">
+          <input class="header__form-input" type="text" name="search" placeholder="Введите тему новости" required />
+          <button class="button header__button" type="submit">Искать</button>
+        </form>
+      </div>
     </header>
-
+    <button class="button">Text</button>
   </div>
   <div class="overlay"></div>
   <script src="<%= htmlWebpackPlugin.files.chunks.main.entry %>"></script>

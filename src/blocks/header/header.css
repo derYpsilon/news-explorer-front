@@ -1,3 +1,10 @@
+@import url(./__title/header__title.css);
+@import url(./__subtitle/header__subtitle.css);
+@import url(./__title-wrapper/header__title-wrapper.css);
+@import url(./__form/header__form.css);
+@import url(./__form-input/header__form-input.css);
+@import url(./__button/header__button.css);
+
 .header {
   position: relative;
   min-height: 576px;

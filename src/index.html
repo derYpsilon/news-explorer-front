@@ -42,6 +42,17 @@
         </form>
       </div>
     </header>
+    <section class=preloader>
+      <div class="preloader__message" id="preloader-searching">
+        <i class="circle-preloader"></i>
+        <h5 class="preloader__subtitle">Идет поиск новостей...</h5>
+      </div>
+      <div class="preloader__message preloader__message_hide" id="preloader-not-found">
+        <img class="preloader__icon" src="<%= require('./images/not-found.svg')%>">
+        <h4 class="preloader__title">Ничего не найдено</h4>
+        <h5 class="preloader__subtitle">К сожалению по вашему запросу ничего не найдено.</h5>
+      </div>
+    </section>
     <button class="button">Text</button>
   </div>
   <div class="overlay"></div>

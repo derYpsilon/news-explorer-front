@@ -16,5 +16,7 @@
 @media screen and (max-width: 767px) {
   .footer__links {
     order: 2;
+    width: 30%;
+    padding: 0;
   }
 }

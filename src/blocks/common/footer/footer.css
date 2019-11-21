@@ -3,7 +3,6 @@
 @import url(./__links/footer__links.css);
 @import url(./__legal/footer__legal.css);
 @import url(./__social-icon/footer__social-icon.css);
-@import url(./__wrapper/footer__wrapper.css);
 
 .footer {
   display: flex;
@@ -19,4 +18,10 @@
 }
 
 @media screen and (max-width: 767px) {
+  .footer {
+    flex-wrap: wrap;
+    height: 224px;
+    align-items: flex-start;
+    padding: 0 16px 0 16px;
+  }
 }

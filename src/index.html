@@ -16,7 +16,6 @@
   <div class="root">
     <header class="header">
       <nav class="menu">
-
         <a href="./" class="menu__logo">News Explorer</a>
         <div class="menu__mobile"></div>
         <ul class="menu__items-list">
@@ -50,12 +49,12 @@
       </div>
       <!-- Чтобы показать ошибку поиска уберите класс preloader__message_hide -->
       <div class="preloader__message preloader__message_hide" id="preloader-not-found">
-        <img class="preloader__icon" src="<%= require('./images/not-found.svg')%>">
+        <img class="preloader__icon" src="<%= require('./images/not-found.svg')%>" alt="Ничего не найдено.">
         <h4 class="preloader__title">Ничего не найдено</h4>
         <h5 class="preloader__subtitle">К сожалению по вашему запросу ничего не найдено.</h5>
       </div>
     </section>
-    <section class="results">
+    <main class="results">
       <h3 class="results__title">Результаты поиска</h3>
       <div class="results__news">
         <div class="card">
@@ -131,7 +130,24 @@
 
       </div>
       <button class="button results__button">Показать еще</button>
+    </main>
+    <section class="about">
+      <img class="about__photo" src="<%= require('./images/selfie.jpg')%>" alt="Ypsilon Smudo">
+      <div>
+        <h3 class="about__title">Об авторе</h3>
+        <p class="about__text">
+          Note! Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae, odit tempora provident
+          consectetur nihil pariatur sunt ab? Quo quaerat voluptates expedita harum, vero amet ducimus!
+        </p>
+        <p class="about__text">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae, odit tempora provident
+          consectetur nihil pariatur sunt ab? Quo quaerat voluptates expedita harum, vero amet ducimus!
+        </p>
+      </div>
     </section>
+    <footer>
+      footer!
+    </footer>
     <!-- <button class="button">Text</button> -->
   </div>
   <div class="overlay"></div>

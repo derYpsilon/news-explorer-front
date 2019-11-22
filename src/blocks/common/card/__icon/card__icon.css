@@ -19,6 +19,7 @@
   background-image: url(../../../../images/bookmark/hover.svg);
   z-index: 5;
 }
+
 .card__icon:hover ~ .card__warning {
   opacity: 1;
   transition: 0.3s;

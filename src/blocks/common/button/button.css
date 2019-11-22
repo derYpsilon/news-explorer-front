@@ -19,3 +19,8 @@
 .button:active {
   background-color: #2a65cc;
 }
+
+.button:disabled {
+  color: #b6bcbf;
+  background-color: #e6e8eb;
+}

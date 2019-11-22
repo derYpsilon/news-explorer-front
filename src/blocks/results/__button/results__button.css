@@ -6,6 +6,10 @@
   padding: 18px 60px 18px 60px;
 }
 
+.button.results__button:active {
+  background-color: #e8e8e9;
+}
+
 @media screen and (max-width: 1023px) {
   .button.results__button {
     margin: 32px auto 0 auto;

@@ -1,0 +1,7 @@
+@import url(./_hide/auth-form__error-message_hide.css);
+
+.auth-form__error-message {
+  color: #ff0000;
+  font-size: 0.8rem;
+  margin: 0;
+}

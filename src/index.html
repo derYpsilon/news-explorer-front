@@ -163,9 +163,28 @@
         </a>
       </p>
     </footer>
-    <!-- <button class="button">Text</button> -->
+    <!-- <button class="button">Text</button>
+    <button class="button" disabled>Text</button> -->
   </div>
   <div class="overlay"></div>
+
+  <section class="auth-form__wrapper">
+    <form class="auth-form">
+      <div class="auth-form__close" id="close-login-form"></div>
+      <h4 class="auth-form__title">Вход</h4>
+      <span class="auth-form__subtitle">E-mail</span>
+      <input class="auth-form__input" name="email" placeholder="Введите почту" required>
+      <span class="auth-form__error-message auth-form__error-message_hide" id="error-email">Введи почту,
+        Васисуалий!</span>
+      <span class="auth-form__subtitle">Пароль</span>
+      <input class="auth-form__input" name="password" type="password" placeholder="Введите пароль" required>
+      <span class="auth-form__error-message" id="error-password">Пароль тоже введи!</span>
+      <button class="button auth-form__button" name="login-button" type="submit" disabled>Войти</button>
+      <span class="auth-form__other-action">или <a href="#" id="open-register-form">Зарегистрироваться</a></span>
+    </form>
+    <div class="overlay overlay_on" id="overlay"></div>
+  </section>
+
   <script src="<%= htmlWebpackPlugin.files.chunks.main.entry %>"></script>
 </body>
 

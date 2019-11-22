@@ -41,13 +41,4 @@
     opacity: 0;
     transition: 0.3s;
   }
-
-  .auth-form ~ .header.menu.menu__mobile {
-    opacity: 0;
-    transition: 0.3s;
-  }
-  /* .card__icon:hover ~ .card__warning {
-    opacity: 1;
-    transition: 0.3s;
-  } */
 }

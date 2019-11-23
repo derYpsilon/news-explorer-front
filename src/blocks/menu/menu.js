@@ -1,3 +1,5 @@
+import './menu.css'
+
 export default class Menu {
   constructor(
     {

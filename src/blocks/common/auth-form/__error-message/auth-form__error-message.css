@@ -1,5 +1,5 @@
 @import url(./_hide/auth-form__error-message_hide.css);
-
+@import url(./_usr-exists/auth-form__error-message_usr-exists.css);
 .auth-form__error-message {
   color: #ff0000;
   font-size: 0.8rem;

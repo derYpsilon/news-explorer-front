@@ -9,7 +9,7 @@ module.exports = {
   entry: {
     main: './src/index.js',
     about: './src/about/index.js',
-    links: './src/links/index.js',
+    articles: './src/articles/index.js',
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -77,8 +77,8 @@ module.exports = {
     new HtmlWebpackPlugin({
       inject: false,
       hash: true,
-      template: './src/links/index.html',
-      filename: 'links/index.html',
+      template: './src/articles/index.html',
+      filename: 'articles/index.html',
     }),
     new HtmlWebpackPlugin({
       inject: false,

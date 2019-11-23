@@ -12,17 +12,17 @@
   <link rel="icon" href="<%= require('./images/favicon.png')%>" type="image/png">
 </head>
 
-<body>
+<body class="body-noscroll">
   <div class="root">
     <header class="header">
       <nav class="menu">
         <a href="./" class="menu__logo">News Explorer</a>
         <div class="menu__mobile" id="mobile-menu"></div>
         <ul class="menu__items-list">
-          <li class="menu__items-single-item menu__items-single-item_selected"><a href="#"
+          <li class="menu__items-single-item menu__items-single-item_selected"><a href="./"
               class="menu__link menu__link_selected">Главная</a></li>
-          <li class="menu__items-single-item"><a href="#" class="menu__link">О проекте</a></li>
-          <li class="menu__items-single-item"><a href="#" class="menu__link">Сохраненные статьи</a></li>
+          <li class="menu__items-single-item"><a href="./about/" class="menu__link">О проекте</a></li>
+          <li class="menu__items-single-item"><a href="./articles/" class="menu__link">Сохраненные статьи</a></li>
           <li class="menu__items-single-item">
             <a href="#" class="menu__link menu__link_logged">
               Васисуалий <div class="menu__logout"></div>
@@ -166,8 +166,6 @@
     <!-- <button class="button">Text</button>
     <button class="button" disabled>Text</button> -->
   </div>
-  <div class="overlay"></div>
-
   <section class="auth-form__wrapper auth-form__wrapper_hide" id="login-form">
     <form class="auth-form" name="login">
       <div class="auth-form__close" id="close-login-form"></div>
@@ -182,10 +180,9 @@
       <button class="button auth-form__button" name="login-button" type="submit" disabled>Войти</button>
       <span class="auth-form__other-action">или <a href="#" id="open-signup-form">Зарегистрироваться</a></span>
     </form>
-    <div class="overlay overlay_on" id="overlay"></div>
   </section>
 
-  <section class="auth-form__wrapper auth-form__wrapper_hide" id="signup-form">
+  <section class="auth-form__wrapper" id="signup-form">
     <form class="auth-form" name="signup">
       <div class="auth-form__close" id="close-signup-form"></div>
       <h4 class="auth-form__title">Регистрация</h4>
@@ -202,9 +199,8 @@
       <button class="button auth-form__button" name="signup-button" type="submit" disabled>Зарегистрироваться</button>
       <span class="auth-form__other-action">или <a href="#" id="open-login-form">Войти</a></span>
     </form>
-    <div class="overlay overlay_on" id="overlay"></div>
   </section>
-
+  <div class="overlay overlay_on"></div>
   <script src="<%= htmlWebpackPlugin.files.chunks.main.entry %>"></script>
 </body>
 

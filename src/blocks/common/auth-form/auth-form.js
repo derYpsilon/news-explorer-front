@@ -1,9 +1,8 @@
 import './auth-form.css'
 
-export default class AuthForm {
-  constructor(domElement, overlay, goTo, submitFunction) {
+class AuthForm {
+  constructor(domElement, goTo, submitFunction) {
     this.domElement = domElement
-    this.overlay = overlay
     this.closeButton = domElement.querySelector('.auth-form__close')
     this.closeButton.addEventListener('click', () => { this.close() })
     this.form = domElement.querySelector('.auth-form')
@@ -17,14 +16,12 @@ export default class AuthForm {
   }
 
   open() {
-    // this.overlay.show()
     this.domElement.classList.remove('auth-form__wrapper_hide')
     document.body.classList.add('body-noscroll')
   }
 
   close() {
     document.body.classList.remove('body-noscroll')
-    // this.overlay.hide()
     this.domElement.classList.add('auth-form__wrapper_hide')
   }
 
@@ -33,3 +30,21 @@ export default class AuthForm {
     this.goTo.classList.remove('auth-form__wrapper_hide')
   }
 }
+
+export const loginForm = new AuthForm(
+  document.querySelector('#login-form'),
+  '#signup-form',
+  () => { console.log('works') },
+)
+
+export const signupForm = new AuthForm(
+  document.querySelector('#signup-form'),
+  '#login-form',
+  () => { console.log('works') },
+)
+
+export const regCompleteForm = new AuthForm(
+  document.querySelector('#signup-ok'),
+  '#login-form',
+  () => { console.log('works') },
+)

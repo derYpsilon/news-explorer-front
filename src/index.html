@@ -57,7 +57,7 @@
     <main class="results">
       <h3 class="results__title">Результаты поиска</h3>
       <div class="results__news">
-        <div class="card">
+        <a href="#" class="card">
           <div class="card__upper-body">
             <div class="card__pic"></div>
             <div class="card__icon card__icon_logged"></div>
@@ -75,8 +75,8 @@
             </div>
           </div>
           <p class="card__src">AUS.eins</p>
-        </div>
-        <div class="card">
+        </a>
+        <a href="#" class="card">
           <div class="card__upper-body">
             <div class="card__pic"></div>
             <div class="card__icon"></div>
@@ -91,9 +91,9 @@
               </p>
             </div>
           </div>
-          <p class="card__src">AUS.eins</p>
-        </div>
-        <div class="card">
+          <p class="card__src">Rai Uno</p>
+        </a>
+        <a href="#" class="card">
           <div class="card__upper-body">
             <div class="card__pic"></div>
             <div class="card__icon card__icon_marked"></div>
@@ -109,8 +109,8 @@
             </div>
           </div>
           <p class="card__src">AUS.eins</p>
-        </div>
-        <div class="card">
+        </a>
+        <a href="#" class="card">
           <div class="card__upper-body">
             <div class="card__pic"></div>
             <div class="card__icon card__icon_marked"></div>
@@ -125,9 +125,8 @@
               </p>
             </div>
           </div>
-          <p class="card__src">AUS.eins</p>
-        </div>
-
+          <p class="card__src">TV Zwei</p>
+        </a>
       </div>
       <button class="button results__button">Показать еще</button>
     </main>
@@ -174,18 +173,20 @@
         <h4 class="auth-form__title">Вход</h4>
         <span class="auth-form__subtitle">E-mail</span>
         <input class="auth-form__input" name="email" type="email" placeholder="Введите почту" required>
-        <span class="auth-form__error-message" id="error-email">Введите корректный адрес
-          e-mail</span>
+        <span class="auth-form__error-message" id="error-email">
+          Введите корректный адресe-mail
+        </span>
         <span class="auth-form__subtitle">Пароль</span>
         <input class="auth-form__input" name="password" type="password" placeholder="Введите пароль" required>
-        <span class="auth-form__error-message auth-form__error-message_hide" id="error-password">Поле не может быть
-          пустым!</span>
-        <span class="auth-form__error-message auth-form__error-message_usr-exists" id=" error-not-logged">Неправильный
-          логин
-          или пароль</span>
+        <span class="auth-form__error-message auth-form__error-message_hide" id="error-password">
+          Поле не может быть пустым!
+        </span>
+        <span class="auth-form__error-message auth-form__error-message_usr-exists" id=" error-not-logged">
+          Неправильный логин или пароль
+        </span>
         <button class="button auth-form__button" name="login-button" type="submit" disabled>Войти</button>
-        <span class="auth-form__other-action">или <span class="auth-form__other-action-click"
-            id="open-signup-form">Зарегистрироваться</span>
+        <span class="auth-form__other-action">
+          или <span class="auth-form__other-action-click" id="open-signup-form">Зарегистрироваться</span>
         </span>
       </form>
     </section>
@@ -201,16 +202,20 @@
         <span class="auth-form__subtitle">Пароль</span>
         <input class="auth-form__input" name="password" type="password" placeholder="Введите пароль" minlength="8"
           required>
-        <span class="auth-form__error-message" id="error-password">Длина пароля должна быть 8 или более символов</span>
+        <span class="auth-form__error-message" id="error-password">
+          Длина пароля должна быть 8 или более символов
+        </span>
         <span class="auth-form__subtitle">Имя</span>
         <input class="auth-form__input" name="name" placeholder="Введите свое имя" required minlength="2">
-        <span class="auth-form__error-message auth-form__error-message_hide"" id=" error-name">Введите имя!</span>
-        <span class="auth-form__error-message auth-form__error-message_usr-exists"" id=" error-register">Такой
-          пользователь
-          уже есть</span>
+        <span class="auth-form__error-message auth-form__error-message_hide"" id=" error-name">
+          Введите имя!
+        </span>
+        <span class="auth-form__error-message auth-form__error-message_usr-exists"" id=" error-register">
+          Такой пользователь уже есть
+        </span>
         <button class="button auth-form__button" name="signup-button" type="submit" disabled>Зарегистрироваться</button>
-        <span class="auth-form__other-action">или <span class="auth-form__other-action-click"
-            id="open-login-form">Войти</span>
+        <span class="auth-form__other-action">
+          или <span class="auth-form__other-action-click" id="open-login-form">Войти</span>
         </span>
       </form>
     </section>
@@ -219,9 +224,8 @@
       <form class="auth-form">
         <div class="auth-form__close" id="close-signup-form"></div>
         <h4 class="auth-form__title">Пользователь успешно зарегистрирован!</h4>
-        <span class="auth-form__other-action auth-form__other-action_left"><span class="auth-form__other-action-click"
-            id="open-login-form">Выполнить
-            вход</span>
+        <span class="auth-form__other-action auth-form__other-action_left">
+          <span class="auth-form__other-action-click" id="open-login-form">Выполнить вход</span>
         </span>
       </form>
     </section>

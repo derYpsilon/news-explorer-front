@@ -1,6 +1,8 @@
 import './menu.css'
+import Component from '../common/component'
+import Overlay from '../common/overlay/overlay'
 
-export default class Menu {
+class Menu {
   constructor(
     {
       control, items, menu,
@@ -38,3 +40,23 @@ export default class Menu {
     this.isOpened = false
   }
 }
+
+const overlay = new Overlay()
+
+export const mainMenu = new Menu(
+  {
+    control: '.menu__mobile',
+    items: '.menu__items-list',
+    menu: '.menu',
+  },
+  overlay,
+)
+
+export const menuOperator = new Component(
+  document.querySelector('.menu__mobile'),
+  {
+    click: () => {
+      mainMenu.click()
+    },
+  },
+)

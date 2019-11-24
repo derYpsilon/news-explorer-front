@@ -8,8 +8,8 @@ const webpack = require('webpack')
 module.exports = {
   entry: {
     main: './src/index.js',
-    about: './src/about/index.js',
-    articles: './src/articles/index.js',
+    about: './src/pages/about/index.js',
+    articles: './src/pages/articles/index.js',
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -77,13 +77,13 @@ module.exports = {
     new HtmlWebpackPlugin({
       inject: false,
       hash: true,
-      template: './src/articles/index.html',
+      template: './src/pages/articles/index.html',
       filename: 'articles/index.html',
     }),
     new HtmlWebpackPlugin({
       inject: false,
       hash: true,
-      template: './src/about/index.html',
+      template: './src/pages/about/index.html',
       filename: 'about/index.html',
     }),
     new WebpackMd5Hash(),

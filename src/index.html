@@ -24,8 +24,8 @@
           <li class="menu__items-single-item"><a href="./about/" class="menu__link">О проекте</a></li>
           <li class="menu__items-single-item"><a href="./articles/" class="menu__link">Сохраненные статьи</a></li>
           <li class="menu__items-single-item">
-            <a href="#" class="menu__link menu__link_logged">
-              Васисуалий <div class="menu__logout"></div>
+            <span class="menu__link menu__link_logged">
+              Васисуалий <div class="menu__logout"></span>
             </a>
           </li>
         </ul>
@@ -132,7 +132,7 @@
       <button class="button results__button">Показать еще</button>
     </main>
     <section class="about">
-      <img class="about__photo" src="<%= require('./images/selfie.jpg')%>" alt="Ypsilon Smudo">
+      <img class="about__photo" src="<%= require('./images/selfie.jpg')%>" alt="Фото автора">
       <div>
         <h3 class="about__title">Об авторе</h3>
         <p class="about__text">
@@ -156,70 +156,78 @@
       </nav>
       <p class="footer__links">
         <a href="https://github.com/derYpsilon/" class="footer__social-icon">
-          <img src="<%= require('./images/social/git.svg')%>">
+          <img src="<%= require('./images/social/git.svg')%>" alt="GitHub Logo">
         </a>
         <a href="https://facebook.com" class="footer__social-icon">
-          <img src="<%= require('./images/social/facebook.svg')%>">
+          <img src="<%= require('./images/social/facebook.svg')%>" alt="Facebook Logo">
         </a>
       </p>
     </footer>
     <!-- <button class="button">Text</button>
     <button class="button" disabled>Text</button> -->
   </div>
-  <section class="auth-form__wrapper auth-form__wrapper_hide" id="login-form">
-    <form class="auth-form" name="login">
-      <div class="auth-form__close" id="close-login-form"></div>
-      <h4 class="auth-form__title">Вход</h4>
-      <span class="auth-form__subtitle">E-mail</span>
-      <input class="auth-form__input" name="email" type="email" placeholder="Введите почту" required>
-      <span class="auth-form__error-message auth-form__error-message_hide" id="error-email">Введите корректный адрес
-        e-mail</span>
-      <span class="auth-form__subtitle">Пароль</span>
-      <input class="auth-form__input" name="password" type="password" placeholder="Введите пароль" required>
-      <span class="auth-form__error-message" id="error-password">Поле не может быть пустым!</span>
-      <button class="button auth-form__button" name="login-button" type="submit" disabled>Войти</button>
-      <span class="auth-form__other-action">или <a href="#" class="auth-form__other-action-click"
-          id="open-signup-form">Зарегистрироваться</a>
-      </span>
-    </form>
-  </section>
+  <!-- Сервисная часть с оверлеем и формами -->
+  <div id="service-area">
+    <section class="auth-form__wrapper auth-form__wrapper_hide" id="login-form">
+      <form class="auth-form" name="login">
+        <div class="auth-form__close" id="close-login-form"></div>
+        <h4 class="auth-form__title">Вход</h4>
+        <span class="auth-form__subtitle">E-mail</span>
+        <input class="auth-form__input" name="email" type="email" placeholder="Введите почту" required>
+        <span class="auth-form__error-message" id="error-email">Введите корректный адрес
+          e-mail</span>
+        <span class="auth-form__subtitle">Пароль</span>
+        <input class="auth-form__input" name="password" type="password" placeholder="Введите пароль" required>
+        <span class="auth-form__error-message auth-form__error-message_hide" id="error-password">Поле не может быть
+          пустым!</span>
+        <span class="auth-form__error-message auth-form__error-message_usr-exists" id=" error-not-logged">Неправильный
+          логин
+          или пароль</span>
+        <button class="button auth-form__button" name="login-button" type="submit" disabled>Войти</button>
+        <span class="auth-form__other-action">или <span class="auth-form__other-action-click"
+            id="open-signup-form">Зарегистрироваться</span>
+        </span>
+      </form>
+    </section>
 
-  <section class="auth-form__wrapper auth-form__wrapper_hide" id="signup-form">
-    <form class="auth-form" name="signup">
-      <div class="auth-form__close" id="close-signup-form"></div>
-      <h4 class="auth-form__title">Регистрация</h4>
-      <span class="auth-form__subtitle">E-mail</span>
-      <input class="auth-form__input" name="email" placeholder="Введите почту" type="email" required>
-      <span class="auth-form__error-message auth-form__error-message_hide" id="error-email">Введите корректный адрес
-        e-mail</span>
-      <span class="auth-form__subtitle">Пароль</span>
-      <input class="auth-form__input" name="password" type="password" placeholder="Введите пароль" minlength="8"
-        required>
-      <span class="auth-form__error-message" id="error-password">Длина пароля должна быть 8 или более символов</span>
-      <span class="auth-form__subtitle">Имя</span>
-      <input class="auth-form__input" name="name" placeholder="Введите свое имя" required minlength="2">
-      <span class="auth-form__error-message auth-form__error-message_hide"" id=" error-name">Введите имя!</span>
-      <span class="auth-form__error-message auth-form__error-message_usr-exists"" id=" error-name">Такой пользователь
-        уже есть</span>
-      <button class="button auth-form__button" name="signup-button" type="submit" disabled>Зарегистрироваться</button>
-      <span class="auth-form__other-action">или <a href="#" class="auth-form__other-action-click"
-          id="open-login-form">Войти</a>
-      </span>
-    </form>
-  </section>
+    <section class="auth-form__wrapper auth-form__wrapper_hide" id="signup-form">
+      <form class="auth-form" name="signup">
+        <div class="auth-form__close" id="close-signup-form"></div>
+        <h4 class="auth-form__title">Регистрация</h4>
+        <span class="auth-form__subtitle">E-mail</span>
+        <input class="auth-form__input" name="email" placeholder="Введите почту" type="email" required>
+        <span class="auth-form__error-message auth-form__error-message_hide" id="error-email">Введите корректный адрес
+          e-mail</span>
+        <span class="auth-form__subtitle">Пароль</span>
+        <input class="auth-form__input" name="password" type="password" placeholder="Введите пароль" minlength="8"
+          required>
+        <span class="auth-form__error-message" id="error-password">Длина пароля должна быть 8 или более символов</span>
+        <span class="auth-form__subtitle">Имя</span>
+        <input class="auth-form__input" name="name" placeholder="Введите свое имя" required minlength="2">
+        <span class="auth-form__error-message auth-form__error-message_hide"" id=" error-name">Введите имя!</span>
+        <span class="auth-form__error-message auth-form__error-message_usr-exists"" id=" error-register">Такой
+          пользователь
+          уже есть</span>
+        <button class="button auth-form__button" name="signup-button" type="submit" disabled>Зарегистрироваться</button>
+        <span class="auth-form__other-action">или <span class="auth-form__other-action-click"
+            id="open-login-form">Войти</span>
+        </span>
+      </form>
+    </section>
 
-  <section class="auth-form__wrapper auth-form__wrapper_hide" id="signup-ok">
-    <div class="auth-form">
-      <div class="auth-form__close" id="close-signup-form"></div>
-      <h4 class="auth-form__title">Пользователь успешно зарегистрирован!</h4>
-      <span class="auth-form__other-action auth-form__other-action_left"><a href="#"
-          class="auth-form__other-action-click" id="open-login-form">Выполнить
-          вход</a>
-      </span>
-    </div>
-  </section>
-  <!-- add  overlay_on to show overlay -->
-  <div class="overlay"></div>
+    <section class="auth-form__wrapper auth-form__wrapper_hide" id="signup-ok">
+      <form class="auth-form">
+        <div class="auth-form__close" id="close-signup-form"></div>
+        <h4 class="auth-form__title">Пользователь успешно зарегистрирован!</h4>
+        <span class="auth-form__other-action auth-form__other-action_left"><span class="auth-form__other-action-click"
+            id="open-login-form">Выполнить
+            вход</span>
+        </span>
+      </form>
+    </section>
+    <!-- add class "overlay_on" to show overlay -->
+    <div class="overlay"></div>
+  </div>
   <script src="<%= htmlWebpackPlugin.files.chunks.main.entry %>"></script>
 </body>
 

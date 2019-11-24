@@ -8,6 +8,7 @@
   font-weight: 900;
   text-decoration: none;
   color: #b6bcbf;
+  cursor: pointer;
 }
 
 .menu__link:hover {

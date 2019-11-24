@@ -10,18 +10,21 @@ export default class AuthForm {
     this.goTo = document.querySelector(goTo)
     this.nextStep = domElement.querySelector('.auth-form__other-action-click')
     this.nextStep.addEventListener('click', () => { this.openNext() })
+    // Stub for external sibmitFunction
     this.submit = submitFunction
+    // TODO get submitButton element and add event listener to it
+    // TODO add check is Button exists
   }
 
   open() {
-    this.overlay.show()
+    // this.overlay.show()
     this.domElement.classList.remove('auth-form__wrapper_hide')
     document.body.classList.add('body-noscroll')
   }
 
   close() {
     document.body.classList.remove('body-noscroll')
-    this.overlay.hide()
+    // this.overlay.hide()
     this.domElement.classList.add('auth-form__wrapper_hide')
   }
 

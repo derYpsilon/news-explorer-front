@@ -1,0 +1,8 @@
+@import url(./__title/customers__title.css);
+@import url(./__text/customers__text.css);
+
+.customers {
+  padding: 80px 104px 72px 104px;
+  box-sizing: border-box;
+  background-color: white;
+}

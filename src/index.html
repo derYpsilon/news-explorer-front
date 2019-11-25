@@ -24,9 +24,9 @@
           <li class="menu__items-single-item"><a href="./about/" class="menu__link">О проекте</a></li>
           <li class="menu__items-single-item"><a href="./articles/" class="menu__link">Сохраненные статьи</a></li>
           <li class="menu__items-single-item">
-            <span class="menu__link menu__link_logged">
-              Васисуалий <div class="menu__logout"></span>
-            </a>
+            <span class="menu__link menu__link_logged">Васисуалий
+              <span class="menu__logout"></span>
+            </span>
           </li>
         </ul>
       </nav>
@@ -150,14 +150,14 @@
         <ul class="footer__menu">
           <li class="footer__menu-item"><a href="./">Главная</a></li>
           <li class="footer__menu-item"><a href="./about/">О проекте</a></li>
-          <li class="footer__menu-item"><a href="https://praktikum.yandex.ru">Яндекс.Практикум</a></li>
+          <li class="footer__menu-item"><a href="https://praktikum.yandex.ru" target="_blank">Яндекс.Практикум</a></li>
         </ul>
       </nav>
       <p class="footer__links">
-        <a href="https://github.com/derYpsilon/" class="footer__social-icon">
+        <a href="https://github.com/derYpsilon/" class="footer__social-icon" target="_blank">
           <img src="<%= require('./images/social/git.svg')%>" alt="GitHub Logo">
         </a>
-        <a href="https://facebook.com" class="footer__social-icon">
+        <a href="https://facebook.com" class="footer__social-icon" target="_blank">
           <img src="<%= require('./images/social/facebook.svg')%>" alt="Facebook Logo">
         </a>
       </p>
@@ -173,15 +173,15 @@
         <h4 class="auth-form__title">Вход</h4>
         <span class="auth-form__subtitle">E-mail</span>
         <input class="auth-form__input" name="email" type="email" placeholder="Введите почту" required>
-        <span class="auth-form__error-message" id="error-email">
+        <span class="auth-form__error-message" id="error-email-login">
           Введите корректный адресe-mail
         </span>
         <span class="auth-form__subtitle">Пароль</span>
         <input class="auth-form__input" name="password" type="password" placeholder="Введите пароль" required>
-        <span class="auth-form__error-message auth-form__error-message_hide" id="error-password">
+        <span class="auth-form__error-message auth-form__error-message_hide" id="error-password-login">
           Поле не может быть пустым!
         </span>
-        <span class="auth-form__error-message auth-form__error-message_usr-exists" id=" error-not-logged">
+        <span class="auth-form__error-message auth-form__error-message_usr-exists" id="error-not-logged">
           Неправильный логин или пароль
         </span>
         <button class="button auth-form__button" name="login-button" type="submit" disabled>Войти</button>
@@ -207,10 +207,10 @@
         </span>
         <span class="auth-form__subtitle">Имя</span>
         <input class="auth-form__input" name="name" placeholder="Введите свое имя" required minlength="2">
-        <span class="auth-form__error-message auth-form__error-message_hide"" id=" error-name">
+        <span class="auth-form__error-message auth-form__error-message_hide" id="error-name">
           Введите имя!
         </span>
-        <span class="auth-form__error-message auth-form__error-message_usr-exists"" id=" error-register">
+        <span class="auth-form__error-message auth-form__error-message_usr-exists" id="error-register">
           Такой пользователь уже есть
         </span>
         <button class="button auth-form__button" name="signup-button" type="submit" disabled>Зарегистрироваться</button>
@@ -222,10 +222,10 @@
 
     <section class="auth-form__wrapper auth-form__wrapper_hide" id="signup-ok">
       <form class="auth-form">
-        <div class="auth-form__close" id="close-signup-form"></div>
+        <div class="auth-form__close" id="close-signup-ok-form"></div>
         <h4 class="auth-form__title">Пользователь успешно зарегистрирован!</h4>
         <span class="auth-form__other-action auth-form__other-action_left">
-          <span class="auth-form__other-action-click" id="open-login-form">Выполнить вход</span>
+          <span class="auth-form__other-action-click" id="open-login-modal">Выполнить вход</span>
         </span>
       </form>
     </section>

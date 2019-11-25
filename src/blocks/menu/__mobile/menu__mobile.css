@@ -1,4 +1,5 @@
 @import url(./_close/menu__mobile_close.css);
+@import url(./_black/menu__mobile_black.css);
 
 .menu__mobile {
   width: 24px;

@@ -1,4 +1,5 @@
 /* eslint-disable no-unused-vars */
+import './vendor/normalize.css'
 import './index.css'
 import { menuOperator, mainMenu } from './blocks/menu/menu'
 import modalOperator from './blocks/common/modaloperator'

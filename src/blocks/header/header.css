@@ -4,6 +4,7 @@
 @import url(./__form/header__form.css);
 @import url(./__form-input/header__form-input.css);
 @import url(./__button/header__button.css);
+@import url(./_white/header_white.css);
 
 .header {
   position: relative;

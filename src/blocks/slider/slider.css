@@ -1,0 +1,14 @@
+.slider {
+  border: 1px solid red;
+}
+
+.slider ul {
+  border: 1px solid navy;
+}
+
+.block {
+  border: 1px solid green;
+  display: inline-block;
+  width: 150px;
+  height: 200px;
+}

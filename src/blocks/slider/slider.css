@@ -1,14 +1,26 @@
+@import url(./__commit-card/slider__commit-card.css);
+@import url(./__swiper/slider__swiper.css);
+@import url(./__commit-date/slider__commit-date.css);
+@import url(./__commit-email/slider__commit-email.css);
+@import url(./__commit-image/slider__commit-image.css);
+@import url(./__commit-name/slider__commit-name.css);
+@import url(./__commit-person/slider__commit-person.css);
+@import url(./__commit-text/slider__commit-text.css);
+
 .slider {
-  border: 1px solid red;
+  position: relative;
+  background-color: #f5f6f7;
+  padding: 72px 104px 62px 104px;
 }
 
-.slider ul {
-  border: 1px solid navy;
+@media screen and (max-width: 1023px) {
+  .slider {
+    padding: 40px 40px 30px 40px;
+  }
 }
 
-.block {
-  border: 1px solid green;
-  display: inline-block;
-  width: 150px;
-  height: 200px;
+@media screen and (max-width: 767px) {
+  .slider {
+    padding: 32px 16px 22px 16px;
+  }
 }

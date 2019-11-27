@@ -3,6 +3,7 @@
 @import url(./__links/footer__links.css);
 @import url(./__legal/footer__legal.css);
 @import url(./__social-icon/footer__social-icon.css);
+@import url(./_storage/footer_storage.css);
 
 .footer {
   display: flex;
@@ -22,6 +23,7 @@
     flex-wrap: wrap;
     height: 224px;
     align-items: flex-start;
+    margin-top: 20px;
     padding: 0 16px 0 16px;
   }
 }

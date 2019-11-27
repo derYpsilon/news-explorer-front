@@ -11,6 +11,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    flex-wrap: no-wrap;
+    flex-wrap: nowrap;
   }
 }

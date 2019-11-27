@@ -1,4 +1,6 @@
 /* eslint-disable class-methods-use-this */
+import './card.css'
+
 export default class Card {
   constructor(parentField) {
     this.parentField = parentField

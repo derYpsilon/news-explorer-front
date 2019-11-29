@@ -19,9 +19,9 @@
 
 Запуск:
 
-`nmp run dev` -- запуск в режиме разработки
-`npm run build` -- компиляция продакшен версии
-`npm run deploy` -- загрузка на хостинг
-`nmp run pages` -- загрузка на gh-pages проекта
+- `nmp run dev` -- запуск в режиме разработки
+- `npm run build` -- компиляция продакшен версии
+- `npm run deploy` -- загрузка на хостинг
+- `nmp run pages` -- загрузка на gh-pages проекта
 
 Чеклист дипломного проекта https://code.s3.yandex.net/frontend-developer/landings/web-diploma-criteria/index.html

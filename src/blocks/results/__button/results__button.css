@@ -4,6 +4,7 @@
   color: black;
   font-size: 1.12rem;
   padding: 18px 60px 18px 60px;
+  box-shadow: none;
 }
 
 .button.results__button:active {

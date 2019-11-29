@@ -13,6 +13,16 @@
   color: black;
 }
 
+.menu__link.menu__link_logged.menu__link_logged-black:hover {
+  border: 1px solid black;
+}
+
+@media screen and (max-width: 767px) {
+  .menu__link.menu__link_logged.menu__link_logged-black {
+    border: 1px solid black;
+  }
+}
+
 @media screen and (max-width: 1023px) {
   .menu__link.menu__link_logged {
     padding: 8px;

@@ -1,0 +1,20 @@
+.customers__title {
+  font-family: "Roboto Slab";
+  color: black;
+  font-size: 2.5rem;
+  line-height: 1.1;
+  margin: 0;
+  font-weight: 400;
+}
+
+@media screen and (max-width: 1023px) {
+  .customers__title {
+    font-size: 2.12rem;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .customers__title {
+    font-size: 1.87rem;
+  }
+}

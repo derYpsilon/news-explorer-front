@@ -1,7 +1,8 @@
+/* eslint-disable eqeqeq */
 import './auth-form.css'
 
 export default class AuthForm {
-  constructor(domElement, goTo, submitFunction) {
+  constructor(domElement, goTo) {
     this.domElement = domElement
     this.closeButton = domElement.querySelector('.auth-form__close')
     this.closeButton.addEventListener('click', () => { this.close() })
@@ -9,10 +10,41 @@ export default class AuthForm {
     this.goTo = document.querySelector(goTo)
     this.nextStep = domElement.querySelector('.auth-form__other-action-click')
     this.nextStep.addEventListener('click', () => { this.openNext() })
-    // Stub for external sibmitFunction
-    this.submit = submitFunction
-    // TODO get submitButton element and add event listener to it
-    // TODO add check is Button exists
+    this._callExt = () => { console.log('Add the callback via class setter') }
+    this.submitButton = ''
+    Array.from(this.form.elements)
+      .forEach((item) => {
+        if (item.nodeName == 'BUTTON') {
+          this.submitButton = item
+        }
+        if (item.nodeName == 'INPUT') {
+          // item.addEventListener('input', event => this.inputHandler(event))
+          // console.log(item)
+        }
+      })
+    this.form.addEventListener('submit', (event) => this.submitForm(event))
+  }
+
+  get callExt() {
+    return this._callExt
+  }
+
+  set callExt(func) {
+    this._callExt = func
+  }
+
+  disableSubmitButton() {
+    this.submitButton.setAttribute('disabled', true)
+  }
+
+  enableSubmitButton() {
+    this.submitButton.removeAttribute('disabled', true)
+  }
+
+  submitForm(event) {
+    event.preventDefault()
+    this.disableSubmitButton()
+    this.callExt({ name: 'Ivan', password: 'Drago' })
   }
 
   open() {

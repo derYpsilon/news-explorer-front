@@ -1,16 +1,12 @@
+/* eslint-disable no-unused-vars */
 import '../../vendor/normalize.css'
 import '../../../node_modules/swiper/css/swiper.min.css'
 import './index.css'
-/* eslint-disable no-unused-vars */
 import Swiper from 'swiper'
 import { menuOperator, mainMenu } from '../../blocks/menu/menu'
 import modalOperator from '../../blocks/common/modaloperator'
 import Card from '../../blocks/common/card/card'
-import { loginForm, signupForm, regCompleteForm } from '../../blocks/common/auth-form/auth-form'
-import Explorer from '../../components/api-explorer'
-
-const apiEx = new Explorer()
-
+import apiEx from '../../components/api-explorer'
 
 // Methods
 const swiper = new Swiper('.swiper-container', {

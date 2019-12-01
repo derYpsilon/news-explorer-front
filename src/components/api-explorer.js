@@ -5,19 +5,16 @@ import AuthForm from '../blocks/common/auth-form/auth-form'
 const loginForm = new AuthForm(
   document.querySelector('#login-form'),
   '#signup-form',
-  () => { console.log('works') },
 )
 
 const signupForm = new AuthForm(
   document.querySelector('#signup-form'),
   '#login-form',
-  () => { console.log('works') },
 )
 
 const regCompleteForm = new AuthForm(
   document.querySelector('#signup-ok'),
   '#login-form',
-  () => { console.log('works') },
 )
 
 class Explorer {
@@ -25,6 +22,7 @@ class Explorer {
     this._isLogged = Boolean(this.userName)
     this.menuCustomizer()
     console.log(`_isLogged: ${this._isLogged}`)
+    this._callExt = null
   }
 
   // eslint-disable-next-line class-methods-use-this
@@ -49,10 +47,12 @@ class Explorer {
     }
   }
 
-  login(user, password) {
-    console.log(user, password)
+  login(data) {
+    console.log(data)
   }
 }
 
 const apiEx = new Explorer()
+loginForm.callExt = apiEx.login
+
 export default apiEx

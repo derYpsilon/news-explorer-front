@@ -1,5 +1,14 @@
+//
+//   _____     _    _____         _
+//  |  _  |___|_|  |   __|_ _ ___| |___ ___ ___ ___
+//  |     | . | |  |   __|_'_| . | | . |  _| -_|  _|
+//  |__|__|  _|_|  |_____|_,_|  _|_|___|_| |___|_|
+//        |_|                |_|
+//
+
 /* eslint-disable no-unused-vars */
 /* eslint-disable class-methods-use-this */
+
 import AuthForm from '../blocks/common/auth-form/auth-form'
 import config from './config'
 
@@ -20,9 +29,9 @@ const regCompleteForm = new AuthForm(
 
 class Explorer {
   constructor() {
-    this._isLogged = Boolean(this.userName)
+    this.isLogged = Boolean(this.userName)
     this.menuCustomizer()
-    console.log(`_isLogged: ${this._isLogged}`)
+    console.log(`_isLogged: ${this.isLogged}`)
     this._callExt = null
   }
 
@@ -69,8 +78,7 @@ class Explorer {
   }
 
   login(data) {
-    console.log(data)
-    fetch(config.login,
+    return fetch(config.login,
       {
         method: 'POST',
         headers: {
@@ -79,8 +87,8 @@ class Explorer {
         mode: 'cors',
         credentials: 'include',
         body: JSON.stringify({
-          password: '123456789',
-          email: 'user@user.ru',
+          password: data.password,
+          email: data.email,
         }),
       })
       .then((res) => {
@@ -88,8 +96,7 @@ class Explorer {
         return res.json()
       })
       .then((answer) => {
-        console.log(answer)
-        fetch('https://api.tsitskun.tk/users/me', { credentials: 'include' })
+        fetch(config.getUser, { credentials: 'include' })
           .then((res) => {
             if (!res.ok) throw new Error(`Ошибка чтения ${res.status}`)
             return res.json()
@@ -97,16 +104,24 @@ class Explorer {
           .then((userInfo) => {
             localStorage.setItem('user', userInfo.user)
             this.menuCustomizer()
+            this.isLogged = true
           })
           .catch((e) => console.log(e.message))
       })
       .catch((err) => {
         console.log(err.message)
+        throw new Error(err.message)
       })
+  }
+
+  signUp(data) {
+    console.log(data)
+    return Promise.resolve()
   }
 }
 
 const apiEx = new Explorer()
 loginForm.callExt = apiEx.login.bind(apiEx)
+signupForm.callExt = apiEx.signUp.bind(apiEx)
 
 export default apiEx

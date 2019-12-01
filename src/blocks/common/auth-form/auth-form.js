@@ -1,3 +1,4 @@
+/* eslint-disable class-methods-use-this */
 /* eslint-disable eqeqeq */
 import './auth-form.css'
 
@@ -18,8 +19,7 @@ export default class AuthForm {
           this.submitButton = item
         }
         if (item.nodeName == 'INPUT') {
-          // item.addEventListener('input', event => this.inputHandler(event))
-          // console.log(item)
+          item.addEventListener('input', () => this.inputHandler())
         }
       })
     this.form.addEventListener('submit', (event) => this.submitForm(event))
@@ -41,10 +41,49 @@ export default class AuthForm {
     this.submitButton.removeAttribute('disabled', true)
   }
 
+  inputHandler() {
+    this.form.querySelector(`#${this.form.name}-fatal`).classList.add('auth-form__error-message_hide')
+    let validator = true
+    Array.from(this.form.elements).forEach((item) => {
+      if (item.nodeName == 'INPUT') {
+        if (!this.isValid(item)) { validator = false }
+      }
+    })
+    if (validator) {
+      this.enableSubmitButton()
+    } else {
+      this.disableSubmitButton()
+    }
+  }
+
+  isValid(elementToCheck) {
+    const errorElement = document.querySelector(`#error-${elementToCheck.name}`)
+    if (!elementToCheck.validity.valid) {
+      errorElement.classList.remove('auth-form__error-message_hide')
+      return false
+    }
+    errorElement.classList.add('auth-form__error-message_hide')
+    return true
+  }
+
   submitForm(event) {
+    const userToSend = {}
     event.preventDefault()
     this.disableSubmitButton()
-    this.callExt({ name: 'Ivan', password: 'Drago' })
+    Array.from(this.form.elements).forEach((item) => {
+      if (item.nodeName == 'INPUT') {
+        userToSend[item.name] = item.value
+      }
+    })
+    this.callExt(userToSend)
+      .then(() => {
+        this.close()
+        this.enableSubmitButton()
+      })
+      .catch(() => {
+        this.form.querySelector(`#${this.form.name}-fatal`).classList.remove('auth-form__error-message_hide')
+        this.enableSubmitButton()
+      })
   }
 
   open() {

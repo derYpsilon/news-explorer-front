@@ -22,9 +22,10 @@
           <li class="menu__items-single-item menu__items-single-item_selected"><a href="./"
               class="menu__link menu__link_selected">Главная</a></li>
           <li class="menu__items-single-item"><a href="./about/" class="menu__link">О проекте</a></li>
-          <li class="menu__items-single-item"><a href="./articles/" class="menu__link">Сохраненные статьи</a></li>
+          <li class="menu__items-single-item" id="menu-saved-articles"><a href="./articles/"
+              class="menu__link">Сохраненные статьи</a></li>
           <li class="menu__items-single-item">
-            <span class="menu__link menu__link_logged">Васисуалий
+            <span class="menu__link menu__link_logged" id="shown-user-name">
               <span class="menu__logout"></span>
             </span>
           </li>
@@ -182,7 +183,7 @@
         <span class="auth-form__error-message auth-form__error-message_usr-exists" id="error-not-logged">
           Неправильный логин или пароль
         </span>
-        <button class="button auth-form__button" name="login-button" type="submit" disabled>Войти</button>
+        <button class="button auth-form__button" name="login-button" type="submit">Войти</button>
         <span class="auth-form__other-action">
           или <span class="auth-form__other-action-click" id="open-signup-form">Зарегистрироваться</span>
         </span>

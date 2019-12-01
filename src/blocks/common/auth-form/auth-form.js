@@ -1,6 +1,6 @@
 import './auth-form.css'
 
-class AuthForm {
+export default class AuthForm {
   constructor(domElement, goTo, submitFunction) {
     this.domElement = domElement
     this.closeButton = domElement.querySelector('.auth-form__close')
@@ -30,21 +30,3 @@ class AuthForm {
     this.goTo.classList.remove('auth-form__wrapper_hide')
   }
 }
-
-export const loginForm = new AuthForm(
-  document.querySelector('#login-form'),
-  '#signup-form',
-  () => { console.log('works') },
-)
-
-export const signupForm = new AuthForm(
-  document.querySelector('#signup-form'),
-  '#login-form',
-  () => { console.log('works') },
-)
-
-export const regCompleteForm = new AuthForm(
-  document.querySelector('#signup-ok'),
-  '#login-form',
-  () => { console.log('works') },
-)

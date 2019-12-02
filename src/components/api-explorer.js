@@ -87,10 +87,7 @@ class Explorer {
         },
         mode: 'cors',
         credentials: 'include',
-        body: JSON.stringify({
-          password: data.password,
-          email: data.email,
-        }),
+        body: JSON.stringify(data),
       })
       .then((res) => {
         if (!res.ok) throw new Error(`Ошибка авторизации ${res.status}`)
@@ -126,14 +123,10 @@ class Explorer {
         },
         mode: 'cors',
         credentials: 'include',
-        body: JSON.stringify({
-          password: data.password,
-          email: data.email,
-          name: data.name,
-        }),
+        body: JSON.stringify(data),
       })
       .then((res) => {
-        if (!res.ok) throw new Error(`Ошибка регистрации ${res.status}`)
+        if (!res.ok) throw new Error(`Ошибка ${res.status} -- ${res.text()}`)
         return res.json()
       })
       .then(() => {

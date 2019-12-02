@@ -57,7 +57,7 @@ export default class AuthForm {
   }
 
   isValid(elementToCheck) {
-    const errorElement = document.querySelector(`#error-${elementToCheck.name}`)
+    const errorElement = document.querySelector(`#error-${elementToCheck.id}`)
     if (!elementToCheck.validity.valid) {
       errorElement.classList.remove('auth-form__error-message_hide')
       return false
@@ -72,7 +72,7 @@ export default class AuthForm {
     this.disableSubmitButton()
     Array.from(this.form.elements).forEach((item) => {
       if (item.nodeName == 'INPUT') {
-        userToSend[item.name] = item.value
+        userToSend[item.name === 'username' ? 'name' : item.name] = item.value
       }
     })
     this.callExt(userToSend)

@@ -7,6 +7,7 @@ import { menuOperator, mainMenu } from '../../blocks/menu/menu'
 import modalOperator from '../../blocks/common/modaloperator'
 import Card from '../../blocks/common/card/card'
 import apiEx from '../../components/api-explorer'
+import CommitLoader from '../../components/commit-loader'
 
 // Methods
 const swiper = new Swiper('.swiper-container', {
@@ -41,6 +42,8 @@ const swiper = new Swiper('.swiper-container', {
     prevEl: '.swiper-button-prev',
   },
 })
+
+const commits = new CommitLoader(swiper.update.bind(swiper))
 
 window.onresize = () => {
   if (window.innerWidth > 767) mainMenu.close()

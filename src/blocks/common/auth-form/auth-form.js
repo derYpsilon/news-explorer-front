@@ -76,10 +76,6 @@ export default class AuthForm {
       }
     })
     this.callExt(userToSend)
-      .then(() => {
-        this.close()
-        this.enableSubmitButton()
-      })
       .catch(() => {
         this.form.querySelector(`#${this.form.name}-fatal`).classList.remove('auth-form__error-message_hide')
         this.enableSubmitButton()

@@ -30,6 +30,7 @@ const regCompleteForm = new AuthForm(
 class Explorer {
   constructor() {
     this.isLogged = Boolean(this.userName)
+    this.userMenuHandler = () => loginForm.open()
     this.menuCustomizer()
     console.log(`_isLogged: ${this.isLogged}`)
     this._callExt = null
@@ -44,13 +45,13 @@ class Explorer {
     const shownName = document.querySelector('#shown-user-name')
     if (!this.userName) {
       shownName.insertAdjacentText('afterbegin', 'Авторизуйтесь')
-      shownName.addEventListener('click', () => loginForm.open())
+      shownName.addEventListener('click', this.userMenuHandler)
       shownName.parentNode.querySelector('.menu__logout').style.display = 'none'
       document.querySelector('#menu-saved-articles').style.display = 'none'
     } else {
       shownName.textContent = this.userName
       shownName.parentNode.querySelector('.menu__logout').style.display = 'inline-block'
-      shownName.removeEventListener('click', () => loginForm.open())
+      shownName.removeEventListener('click', this.userMenuHandler)
       shownName.addEventListener('click', () => this.logout())
       document.querySelector('#menu-saved-articles').style.display = 'flex'
     }
@@ -103,6 +104,8 @@ class Explorer {
           })
           .then((userInfo) => {
             localStorage.setItem('user', userInfo.user)
+            loginForm.enableSubmitButton()
+            loginForm.close()
             this.menuCustomizer()
             this.isLogged = true
           })
@@ -115,8 +118,33 @@ class Explorer {
   }
 
   signUp(data) {
-    console.log(data)
-    return Promise.resolve()
+    return fetch(config.signup,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        mode: 'cors',
+        credentials: 'include',
+        body: JSON.stringify({
+          password: data.password,
+          email: data.email,
+          name: data.name,
+        }),
+      })
+      .then((res) => {
+        if (!res.ok) throw new Error(`Ошибка регистрации ${res.status}`)
+        return res.json()
+      })
+      .then(() => {
+        signupForm.close()
+        regCompleteForm.open()
+        return Promise.resolve()
+      })
+      .catch((err) => {
+        console.log(err.message)
+        throw new Error(err.message)
+      })
   }
 }
 

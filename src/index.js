@@ -5,6 +5,10 @@ import { menuOperator, mainMenu } from './blocks/menu/menu'
 import modalOperator from './blocks/common/modaloperator'
 import Card from './blocks/common/card/card'
 import apiEx from './components/api-explorer'
+import NewsReader from './components/news-reader'
+
+const nReader = new NewsReader()
+nReader.getNews()
 
 const cardIconSave = new Card(document.querySelector('.results'))
 

@@ -8,6 +8,7 @@ const config = {
   maxGitCommits: 15,
   month: ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа',
     'сентября', 'октября', 'ноября', 'декабря'],
+  newsFeed: 'https://newsapi.org/v2/everything?sortBy=popularity&apiKey=61e9a15929844de49c00be490b903f34&language=ru&pageSize=100',
 }
 
 export default config

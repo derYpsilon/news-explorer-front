@@ -29,14 +29,18 @@ export default class CommitLoader {
         }
         this.renderCommits()
       })
-      .catch((err) => console.log(err.message))
+      .catch((err) => {
+        console.log(err.message)
+        // Если коммиты не получены, скрываем весь блок с коммитами совсем
+        document.querySelector('.slider').style.display = 'none'
+      })
   }
 
   buildCommit(data) {
     const container = this.cardTemplate.cloneNode(true)
 
     container.querySelector('.slider__commit-date')
-      .textContent = `${data.date.getDay()} ${config.month[data.date.getMonth()]} ${data.date.getFullYear()}`
+      .textContent = `${data.date.getDate()} ${config.month[data.date.getMonth()]} ${data.date.getFullYear()}`
     container.querySelector('.slider__commit-image').src = data.avatar
     container.querySelector('.slider__commit-name').textContent = data.name
     container.querySelector('.slider__commit-email').textContent = data.email

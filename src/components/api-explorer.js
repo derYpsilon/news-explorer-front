@@ -44,7 +44,8 @@ class Explorer {
   menuCustomizer() {
     const shownName = document.querySelector('#shown-user-name')
     if (!this.userName) {
-      shownName.insertAdjacentText('afterbegin', 'Авторизуйтесь')
+      if (document.location.pathname === '/articles/') document.location.href = '../'
+      shownName.textContent = 'Авторизуйтесь'
       shownName.addEventListener('click', this.userMenuHandler)
       shownName.parentNode.querySelector('.menu__logout').style.display = 'none'
       document.querySelector('#menu-saved-articles').style.display = 'none'
@@ -73,7 +74,7 @@ class Explorer {
       })
       .then(() => {
         localStorage.clear()
-        document.location.href = document.location.pathname === '/articles/' ? '../' : './'
+        this.menuCustomizer()
       })
       .catch((e) => console.log(e.message))
   }

@@ -29,16 +29,19 @@ const regCompleteForm = new AuthForm(
 
 class Explorer {
   constructor() {
-    this.isLogged = Boolean(this.userName)
     this.userMenuHandler = () => loginForm.open()
     this.menuCustomizer()
-    console.log(`_isLogged: ${this.isLogged}`)
     this._callExt = null
+    this.updateView = new Event('updateView', { bubbles: true })
   }
 
   // eslint-disable-next-line class-methods-use-this
   get userName() {
     return localStorage.getItem('user')
+  }
+
+  isLogged() {
+    return Boolean(this.userName)
   }
 
   menuCustomizer() {
@@ -75,6 +78,7 @@ class Explorer {
       .then(() => {
         localStorage.clear()
         this.menuCustomizer()
+        document.dispatchEvent(this.updateView)
       })
       .catch((e) => console.log(e.message))
   }
@@ -105,7 +109,7 @@ class Explorer {
             loginForm.enableSubmitButton()
             loginForm.close()
             this.menuCustomizer()
-            this.isLogged = true
+            document.dispatchEvent(this.updateView)
           })
           .catch((e) => console.log(e.message))
       })

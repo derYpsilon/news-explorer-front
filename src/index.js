@@ -7,10 +7,9 @@ import Card from './blocks/common/card/card'
 import apiEx from './components/api-explorer'
 import NewsReader from './components/news-reader'
 
-const nReader = new NewsReader()
-nReader.getNews()
+const nReader = new NewsReader(apiEx.isLogged.bind(apiEx))
 
-const cardIconSave = new Card(document.querySelector('.results'))
+// const cardIconSave = new Card(document.querySelector('.results'))
 
 // Methods
 

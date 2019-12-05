@@ -8,7 +8,7 @@
   <meta name="author" content="Alexey Tsitskun">
   <meta name="description" content="Diploma project / Articles saver">
   <title>News Explorer / О проекте</title>
-  <link rel="stylesheet" href="../css/style.5de5e841d000939d6eb1.css?e9466fe959e0ffba0a1a">
+  <link rel="stylesheet" href="../css/style.edfe83078378b641a0b3.css?536b5680f2a1ac9c8d5e">
   <link rel="icon" href=".././images/favicon.png" type="image/png">
 </head>
 
@@ -25,11 +25,13 @@
           <li class="menu__items-single-item menu__items-single-item_selected-black">
             <a href="./" class="menu__link menu__link_selected-black">О проекте</a>
           </li>
-          <li class="menu__items-single-item"><a href="../articles/" class="menu__link menu__link_black">Сохраненные
-              статьи</a></li>
+          <li class="menu__items-single-item" id="menu-saved-articles"><a href="../articles/"
+              class="menu__link menu__link_black">
+              Сохраненные статьи</a></li>
           <li class="menu__items-single-item">
             <span class="menu__link menu__link_logged  menu__link_logged-black">
-              Васисуалий <span class="menu__logout menu__logout_black"></span>
+              <span id="shown-user-name"></span>
+              <span class="menu__logout menu__logout_black"></span>
             </span>
           </li>
         </ul>
@@ -82,147 +84,26 @@
       <div class="swiper-button-prev"></div>
       <div class="swiper-container">
         <div class="swiper-wrapper">
-          <div class="swiper-slide">
-            <a href="#" class="slider__commit-card">
-              <p class="slider__commit-date">14 августа, 2019</p>
-              <div class="slider__commit-person">
-                <img class="slider__commit-image" src=".././images/selfie.jpg"
-                  alt="Фото из GitHub">
-                <div>
-                  <h4 class="slider__commit-name">1. Johann Hans Hölzel</h4>
-                  <p class="slider__commit-email">hanz@wien.at</p>
+          <template id="commit-sample">
+            <div class="swiper-slide">
+              <div class="slider__commit-card">
+                <p class="slider__commit-date"></p>
+                <div class="slider__commit-person">
+                  <img class="slider__commit-image" src="" alt="Фото из GitHub">
+                  <div>
+                    <h4 class="slider__commit-name"></h4>
+                    <p class="slider__commit-email"></p>
+                  </div>
                 </div>
+                <p class="slider__commit-text"></p>
               </div>
-              <p class="slider__commit-text">
-                Emmet (formerly Zen Coding) is a web- developer’s toolkit that can greatly improve your HTML & CSS
-                workflow.
-              </p>
-            </a>
-          </div>
-          <div class="swiper-slide">
-            <a href="#" class="slider__commit-card">
-              <p class="slider__commit-date">14 августа, 2019</p>
-              <div class="slider__commit-person">
-                <img class="slider__commit-image" src=".././images/selfie.jpg"
-                  alt="Фото из GitHub">
-                <div>
-                  <h4 class="slider__commit-name">2. Johann Hans Hölzel</h4>
-                  <p class="slider__commit-email">hanz@wien.at</p>
-                </div>
-              </div>
-              <p class="slider__commit-text">
-                Emmet (formerly Zen Coding) is a web- developer’s toolkit that can greatly improve your HTML & CSS
-                workflow.
-              </p>
-            </a>
-          </div>
-          <div class="swiper-slide">
-            <a href="#" class="slider__commit-card">
-              <p class="slider__commit-date">14 августа, 2019</p>
-              <div class="slider__commit-person">
-                <img class="slider__commit-image" src=".././images/selfie.jpg"
-                  alt="Фото из GitHub">
-                <div>
-                  <h4 class="slider__commit-name">3. Johann Hans Hölzel</h4>
-                  <p class="slider__commit-email">hanz@wien.at</p>
-                </div>
-              </div>
-              <p class="slider__commit-text">
-                Emmet (formerly Zen Coding) is a web- developer’s toolkit that can greatly improve your HTML & CSS
-                workflow.
-              </p>
-            </a>
-          </div>
-          <div class="swiper-slide">
-            <a href="#" class="slider__commit-card">
-              <p class="slider__commit-date">14 августа, 2019</p>
-              <div class="slider__commit-person">
-                <img class="slider__commit-image" src=".././images/selfie.jpg"
-                  alt="Фото из GitHub">
-                <div>
-                  <h4 class="slider__commit-name">4. Johann Hans Hölzel</h4>
-                  <p class="slider__commit-email">hanz@wien.at</p>
-                </div>
-              </div>
-              <p class="slider__commit-text">
-                Emmet (formerly Zen Coding) is a web- developer’s toolkit that can greatly improve your HTML & CSS
-                workflow.
-              </p>
-            </a>
-          </div>
-          <div class="swiper-slide">
-            <a href="#" class="slider__commit-card">
-              <p class="slider__commit-date">14 августа, 2019</p>
-              <div class="slider__commit-person">
-                <img class="slider__commit-image" src=".././images/selfie.jpg"
-                  alt="Фото из GitHub">
-                <div>
-                  <h4 class="slider__commit-name">5. Johann Hans Hölzel</h4>
-                  <p class="slider__commit-email">hanz@wien.at</p>
-                </div>
-              </div>
-              <p class="slider__commit-text">
-                Emmet (formerly Zen Coding) is a web- developer’s toolkit that can greatly improve your HTML & CSS
-                workflow.
-              </p>
-            </a>
-          </div>
-          <div class="swiper-slide">
-            <a href="#" class="slider__commit-card">
-              <p class="slider__commit-date">14 августа, 2019</p>
-              <div class="slider__commit-person">
-                <img class="slider__commit-image" src=".././images/selfie.jpg"
-                  alt="Фото из GitHub">
-                <div>
-                  <h4 class="slider__commit-name">6. Johann Hans Hölzel</h4>
-                  <p class="slider__commit-email">hanz@wien.at</p>
-                </div>
-              </div>
-              <p class="slider__commit-text">
-                Emmet (formerly Zen Coding) is a web- developer’s toolkit that can greatly improve your HTML & CSS
-                workflow.
-              </p>
-            </a>
-          </div>
-          <div class="swiper-slide">
-            <a href="#" class="slider__commit-card">
-              <p class="slider__commit-date">14 августа, 2019</p>
-              <div class="slider__commit-person">
-                <img class="slider__commit-image" src=".././images/selfie.jpg"
-                  alt="Фото из GitHub">
-                <div>
-                  <h4 class="slider__commit-name">7. Johann Hans Hölzel</h4>
-                  <p class="slider__commit-email">hanz@wien.at</p>
-                </div>
-              </div>
-              <p class="slider__commit-text">
-                Emmet (formerly Zen Coding) is a web- developer’s toolkit that can greatly improve your HTML & CSS
-                workflow.
-              </p>
-            </a>
-          </div>
-          <div class="swiper-slide">
-            <a href="#" class="slider__commit-card">
-              <p class="slider__commit-date">14 августа, 2019</p>
-              <div class="slider__commit-person">
-                <img class="slider__commit-image" src=".././images/selfie.jpg"
-                  alt="Фото из GitHub">
-                <div>
-                  <h4 class="slider__commit-name">8. Johann Hans Hölzel</h4>
-                  <p class="slider__commit-email">hanz@wien.at</p>
-                </div>
-              </div>
-              <p class="slider__commit-text">
-                Emmet (formerly Zen Coding) is a web- developer’s toolkit that can greatly improve your HTML & CSS
-                workflow.
-              </p>
-            </a>
-          </div>
+            </div>
+          </template>
         </div>
         <div class="swiper-pagination"></div>
       </div>
       <div class="swiper-button-next next"></div>
-      <a class="button slider__git-button">Открыть в GitHub</a>
+      <a class="button slider__git-button" href="https://github.com/derYpsilon/" target="_blank">Открыть в GitHub</a>
     </section>
     <footer class="footer">
       <p class="footer__legal">© 2019 derYpsilon</p>
@@ -250,19 +131,21 @@
         <div class="auth-form__close" id="close-login-form"></div>
         <h4 class="auth-form__title">Вход</h4>
         <span class="auth-form__subtitle">E-mail</span>
-        <input class="auth-form__input" name="email" type="email" placeholder="Введите почту" required>
-        <span class="auth-form__error-message" id="error-email-login">
-          Введите корректный адресe-mail
+        <input class="auth-form__input" name="email" id="email" type="email" placeholder="Введите почту" required>
+        <span class="auth-form__error-message  auth-form__error-message_hide" id="error-email">
+          Введите корректный адрес e-mail
         </span>
         <span class="auth-form__subtitle">Пароль</span>
-        <input class="auth-form__input" name="password" type="password" placeholder="Введите пароль" required>
-        <span class="auth-form__error-message auth-form__error-message_hide" id="error-password-login">
+        <input class="auth-form__input" name="password" id="password" type="password" placeholder="Введите пароль"
+          required>
+        <span class="auth-form__error-message auth-form__error-message_hide" id="error-password">
           Поле не может быть пустым!
         </span>
-        <span class="auth-form__error-message auth-form__error-message_usr-exists" id="error-not-logged">
+        <span class="auth-form__error-message auth-form__error-message_usr-exists  auth-form__error-message_hide"
+          id="login-fatal">
           Неправильный логин или пароль
         </span>
-        <button class="button auth-form__button" name="login-button" type="submit" disabled>Войти</button>
+        <button class="button auth-form__button" name="login-button" type="submit">Войти</button>
         <span class="auth-form__other-action">
           или <span class="auth-form__other-action-click" id="open-signup-form">Зарегистрироваться</span>
         </span>
@@ -274,24 +157,26 @@
         <div class="auth-form__close" id="close-signup-form"></div>
         <h4 class="auth-form__title">Регистрация</h4>
         <span class="auth-form__subtitle">E-mail</span>
-        <input class="auth-form__input" name="email" placeholder="Введите почту" type="email" required>
-        <span class="auth-form__error-message auth-form__error-message_hide" id="error-email">Введите корректный адрес
-          e-mail</span>
+        <input class="auth-form__input" name="email" id="regemail" placeholder="Введите почту" type="email" required>
+        <span class="auth-form__error-message auth-form__error-message_hide" id="error-regemail">Введите корректный
+          адрес e-mail</span>
         <span class="auth-form__subtitle">Пароль</span>
-        <input class="auth-form__input" name="password" type="password" placeholder="Введите пароль" minlength="8"
-          required>
-        <span class="auth-form__error-message" id="error-password">
+        <input class="auth-form__input" name="password" id="regpassword" type="password" placeholder="Введите пароль"
+          minlength="8" required>
+        <span class="auth-form__error-message auth-form__error-message_hide" id="error-regpassword">
           Длина пароля должна быть 8 или более символов
         </span>
         <span class="auth-form__subtitle">Имя</span>
-        <input class="auth-form__input" name="name" placeholder="Введите свое имя" required minlength="2">
-        <span class="auth-form__error-message auth-form__error-message_hide" id="error-name">
-          Введите имя!
+        <input class="auth-form__input" name="username" id="regname" placeholder="Введите свое имя" required
+          minlength="2" pattern="[A-Za-zА-Яа-я]{2,}">
+        <span class="auth-form__error-message auth-form__error-message_hide" id="error-regname">
+          Имя должно и содержать только буквы (2 и более)
         </span>
-        <span class="auth-form__error-message auth-form__error-message_usr-exists" id="error-register">
+        <span class="auth-form__error-message auth-form__error-message_usr-exists auth-form__error-message_hide"
+          id="signup-fatal">
           Такой пользователь уже есть
         </span>
-        <button class="button auth-form__button" name="signup-button" type="submit" disabled>Зарегистрироваться</button>
+        <button class="button auth-form__button" name="signup-button" type="submit">Зарегистрироваться</button>
         <span class="auth-form__other-action">
           или <span class="auth-form__other-action-click" id="open-login-form">Войти</span>
         </span>
@@ -299,7 +184,7 @@
     </section>
 
     <section class="auth-form__wrapper auth-form__wrapper_hide" id="signup-ok">
-      <form class="auth-form">
+      <form class="auth-form" name="it-is-ok">
         <div class="auth-form__close" id="close-signup-ok-form"></div>
         <h4 class="auth-form__title">Пользователь успешно зарегистрирован!</h4>
         <span class="auth-form__other-action auth-form__other-action_left">
@@ -310,7 +195,7 @@
     <!-- add class "overlay_on" to show overlay -->
     <div class="overlay"></div>
   </div>
-  <script src="../about/about.e9466fe959e0ffba0a1a.js?e9466fe959e0ffba0a1a"></script>
+  <script src="../about/about.536b5680f2a1ac9c8d5e.js?536b5680f2a1ac9c8d5e"></script>
 </body>
 
 </html>

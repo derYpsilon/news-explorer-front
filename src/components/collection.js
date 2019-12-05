@@ -51,6 +51,7 @@ export default class Collection {
 
   keywordCount() {
     const theKeys = {}
+    const sortedKeys = {}
     Array.from(Object.keys(this.stats)).forEach((item) => {
       if (!(this.stats[item] in theKeys)) {
         theKeys[this.stats[item]] = 1
@@ -58,40 +59,30 @@ export default class Collection {
         theKeys[this.stats[item]] += 1
       }
     })
-    const findMax = Array.from(Object.keys(theKeys))
-    const max = {
-      firstKey: findMax[0],
-      secondKey: '',
-      thirdKey: '',
-      value: 0,
-    }
-    console.log(theKeys)
-    for (let i = 0; i < findMax.length; i += 1) {
-      if (theKeys[findMax[i]] > max.value) {
-        max.value = theKeys[findMax[i]]
-        max.thirdKey = max.secondKey
-        max.secondKey = max.firstKey
-        max.firstKey = findMax[i]
-      }
-    }
+    Array.from(Object.keys(theKeys)).forEach((item) => {
+      sortedKeys[theKeys[item]] = item
+    })
+    const fromMaxToMin = Array.from(Object.keys(sortedKeys))
+    fromMaxToMin.sort((a, b) => b - a)
+
     return {
-      firstKey: max.firstKey,
-      secondKey: max.secondKey,
-      thirdKey: max.thirdKey,
-      total: findMax.length,
+      firstKey: sortedKeys[fromMaxToMin[0]],
+      secondKey: sortedKeys[fromMaxToMin[1]],
+      thirdKey: sortedKeys[fromMaxToMin[2]],
+      total: Array.from(Object.keys(theKeys)).length,
     }
   }
 
   updateStatistics() {
     this.articlesQty.textContent = `${Array.from(Object.keys(this.stats)).length} сохраненных статей`
     const keywords = this.keywordCount()
-    console.log(keywords)
+
     document.querySelector(config.words.first).textContent = keywords.firstKey
     let tagLine = ''
     if (keywords.total === 3) {
       tagLine = `, ${keywords.secondKey}, ${keywords.thirdKey}`
     } else {
-      tagLine = `, ${keywords.secondKey}`
+      tagLine = keywords.total === 1 ? '' : `, ${keywords.secondKey}`
     }
     document.querySelector(config.words.second).textContent = tagLine
     document.querySelector(config.words.tail).style.display = keywords.total > 3 ? 'auto' : 'none'

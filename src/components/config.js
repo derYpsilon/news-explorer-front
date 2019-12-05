@@ -4,6 +4,7 @@ const config = {
   signup: 'https://api.tsitskun.tk/signup',
   logout: 'https://api.tsitskun.tk/logout',
   getUser: 'https://api.tsitskun.tk/users/me',
+  articles: 'https://api.tsitskun.tk/articles',
   git: 'https://api.github.com/repos/derYpsilon/news-explorer-front/commits',
   maxGitCommits: 15,
   month: ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа',

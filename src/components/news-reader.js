@@ -2,8 +2,11 @@
 import config from './config'
 
 export default class NewsReader {
-  constructor(isLogged) {
+  constructor(isLogged, saveArticle, deleteArticle, showError) {
     this.isLogged = isLogged
+    this.saveArticle = saveArticle
+    this.deleteArticle = deleteArticle
+    this.showError = showError
     this.news = []
     this.cardTemplate = document.querySelector(config.cardSample).content
     this.resultsField = document.querySelector(config.resultsField)
@@ -18,7 +21,7 @@ export default class NewsReader {
 
     this.submit.addEventListener('submit', (event) => this.search(event))
     this.showMore.addEventListener('click', () => this.renderCards())
-    this.resultsField.addEventListener('click', (event) => this.saveCard(event))
+    this.resultsField.addEventListener('click', (event) => this.cardHandler(event))
     document.addEventListener('updateView', () => this.patchRender())
   }
 
@@ -39,9 +42,9 @@ export default class NewsReader {
             source: data.articles[i].source.name,
             title: data.articles[i].title,
             date: new Date(Date.parse(data.articles[i].publishedAt)),
-            description: data.articles[i].description,
-            img: data.articles[i].urlToImage,
-            url: data.articles[i].url,
+            text: data.articles[i].description,
+            image: data.articles[i].urlToImage,
+            link: data.articles[i].url,
             keyword: query,
           })
         }
@@ -63,12 +66,12 @@ export default class NewsReader {
 
   buildCard(data) {
     const container = this.cardTemplate.cloneNode(true)
-    container.querySelector(config.card.node).href = data.url
-    container.querySelector(config.card.img).style.backgroundImage = `url(${data.img})`
+    container.querySelector(config.card.node).href = data.link
+    container.querySelector(config.card.img).style.backgroundImage = `url(${data.image})`
     container.querySelector(config.card.date)
       .textContent = `${data.date.getDate()} ${config.month[data.date.getMonth()]} ${data.date.getFullYear()}`
     container.querySelector(config.card.title).textContent = data.title
-    container.querySelector(config.card.text).textContent = data.description
+    container.querySelector(config.card.text).textContent = data.text
     container.querySelector(config.card.src).textContent = data.source
     // eslint-disable-next-line max-len
     if (this.isLogged()) container.querySelector(config.card.icon.node).classList.add(config.card.icon.logged)
@@ -82,7 +85,7 @@ export default class NewsReader {
     const qty = (delta) < config.showStep ? delta : config.showStep
     if (delta <= config.showStep) this.showMore.classList.add(config.showMore.hide)
     for (let i = 0; i < qty; i += 1) {
-      container.appendChild(this.buildCard(this.news[this.currentPos + i]))
+      container.appendChild(this.buildCard(this.news[this.currentPos]))
       this.currentPos += 1
     }
     this.resultsField.appendChild(container)
@@ -123,17 +126,30 @@ export default class NewsReader {
     )
   }
 
-  saveCard(event) {
+  cardHandler(event) {
     const iconClass = config.card.icon.node.slice(1, config.card.icon.node.length)
     if (event.target.className.includes(iconClass)) {
       event.preventDefault()
       if (this.isLogged()) {
         if (event.target.className.includes(config.card.icon.marked)) {
-          console.log('to Delete')
+          this.deleteArticle(event.target.getAttribute('UID'))
+            .then(() => {
+              event.target.classList.remove(config.card.icon.marked)
+              event.target.removeAttribute('UID')
+            })
+            .catch((err) => {
+              this.showError.show(err.message)
+            })
           event.target.classList.remove(config.card.icon.marked)
         } else {
-          console.log('to Save')
-          event.target.classList.add(config.card.icon.marked)
+          this.saveArticle(this.news[event.target.getAttribute('cardID')])
+            .then((res) => {
+              event.target.classList.add(config.card.icon.marked)
+              event.target.setAttribute('UID', res)
+            })
+            .catch((err) => {
+              this.showError.show(err.message)
+            })
         }
       }
     }

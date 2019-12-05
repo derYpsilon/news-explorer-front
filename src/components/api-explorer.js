@@ -168,7 +168,7 @@ class Explorer {
   }
 
   deleteArticle(id) {
-    return fetch(`${config.articles}/${id}--`,
+    return fetch(`${config.articles}/${id}`,
       {
         method: 'DELETE',
         headers: {
@@ -179,6 +179,26 @@ class Explorer {
       })
       .then((res) => {
         if (!res.ok) throw new Error(`Ошибка удаления карточки ${res.status}`)
+        return res.json()
+      })
+      .catch((err) => {
+        console.log(err.message)
+        throw new Error(err.message)
+      })
+  }
+
+  getAllArticles() {
+    return fetch(config.articles,
+      {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        mode: 'cors',
+        credentials: 'include',
+      })
+      .then((res) => {
+        if (!res.ok) throw new Error(`Ошибка чтения карточек ${res.status}`)
         return res.json()
       })
       .catch((err) => {

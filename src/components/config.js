@@ -21,7 +21,13 @@ const config = {
     text: '.card__text',
     src: '.card__src',
     warning: '.card__warning',
-    icon: { node: '.card__icon', logged: 'card__icon_logged', marked: 'card__icon_marked' },
+    keyword: '.card__keyword',
+    icon: {
+      node: '.card__icon',
+      logged: 'card__icon_logged',
+      marked: 'card__icon_marked',
+      bin: 'card__icon_bin',
+    },
   },
   resultsField: '.results__news',
   newsForm: 'news-finder',
@@ -30,6 +36,15 @@ const config = {
   notFound: { node: '#preloader-not-found', hide: 'preloader__message_hide' },
   serverError: { node: '#preloader-server-error', hide: 'preloader__message_hide' },
   resultsSection: { node: '.results', hide: 'results_hide' },
+  collectionContainer: '.storage',
+  articlesQty: '.articles-qty',
+  articlesHeader: '.saved-title__header',
+  words: {
+    first: '.first-word',
+    second: '.second-word',
+    more: '.and-more',
+    tail: '.word-tail',
+  },
 }
 
 export default config

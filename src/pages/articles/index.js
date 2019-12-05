@@ -3,10 +3,13 @@ import './index.css'
 /* eslint-disable no-unused-vars */
 import { menuOperator, mainMenu } from '../../blocks/menu/menu'
 import modalOperator from '../../blocks/common/modaloperator'
-import Card from '../../blocks/common/card/card'
 import apiEx from '../../components/api-explorer'
+import Collection from '../../components/collection'
 
-const cardIconDelete = new Card(document.querySelector('.storage'))
+const myCollection = new Collection(apiEx.isLogged.bind(apiEx),
+  apiEx.getAllArticles.bind(apiEx),
+  apiEx.deleteArticle.bind(apiEx),
+  apiEx.userName)
 // Methods
 
 window.onresize = () => {

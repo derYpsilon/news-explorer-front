@@ -5,7 +5,6 @@ import './index.css'
 import Swiper from 'swiper'
 import { menuOperator, mainMenu } from '../../blocks/menu/menu'
 import modalOperator from '../../blocks/common/modaloperator'
-import Card from '../../blocks/common/card/card'
 import apiEx from '../../components/api-explorer'
 import CommitLoader from '../../components/commit-loader'
 

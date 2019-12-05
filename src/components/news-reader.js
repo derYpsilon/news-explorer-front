@@ -1,12 +1,13 @@
 /* eslint-disable class-methods-use-this */
 import config from './config'
+import ShowError from '../blocks/common/error/error'
 
 export default class NewsReader {
-  constructor(isLogged, saveArticle, deleteArticle, showError) {
+  constructor(isLogged, saveArticle, deleteArticle) {
     this.isLogged = isLogged
     this.saveArticle = saveArticle
     this.deleteArticle = deleteArticle
-    this.showError = showError
+    this.showError = new ShowError()
     this.news = []
     this.cardTemplate = document.querySelector(config.cardSample).content
     this.resultsField = document.querySelector(config.resultsField)

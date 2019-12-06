@@ -51,7 +51,7 @@ export default class Collection {
 
   keywordCount() {
     const theKeys = {}
-    const sortedKeys = {}
+    const popular = { words: [], key: '', max: 0 }
     Array.from(Object.keys(this.stats)).forEach((item) => {
       if (!(this.stats[item] in theKeys)) {
         theKeys[this.stats[item]] = 1
@@ -59,17 +59,24 @@ export default class Collection {
         theKeys[this.stats[item]] += 1
       }
     })
-    Array.from(Object.keys(theKeys)).forEach((item) => {
-      sortedKeys[theKeys[item]] = item
-    })
-    const fromMaxToMin = Array.from(Object.keys(sortedKeys))
-    fromMaxToMin.sort((a, b) => b - a)
+    const total = Array.from(Object.keys(theKeys)).length
+    const turns = total >= 3 ? 3 : total
+    for (let i = 0; i < turns; i += 1) {
+      Array.from(Object.keys(theKeys)).forEach((item) => {
+        if (popular.max < theKeys[item]) {
+          popular.max = theKeys[item]
+          popular.key = item
+        }
+      })
+      delete theKeys[popular.key]
+      popular.words.push(popular.key)
+      popular.max = 0
+      popular.key = ''
+    }
 
     return {
-      firstKey: sortedKeys[fromMaxToMin[0]],
-      secondKey: sortedKeys[fromMaxToMin[1]],
-      thirdKey: sortedKeys[fromMaxToMin[2]],
-      total: Array.from(Object.keys(theKeys)).length,
+      popular: popular.words,
+      total,
     }
   }
 
@@ -77,12 +84,12 @@ export default class Collection {
     this.articlesQty.textContent = `${Array.from(Object.keys(this.stats)).length} сохраненных статей`
     const keywords = this.keywordCount()
 
-    document.querySelector(config.words.first).textContent = keywords.firstKey
+    document.querySelector(config.words.first).textContent = keywords.total >= 1 ? keywords.popular.shift() : ''
     let tagLine = ''
     if (keywords.total === 3) {
-      tagLine = `, ${keywords.secondKey}, ${keywords.thirdKey}`
+      tagLine = `, ${keywords.popular.shift()}, ${keywords.popular.shift()}`
     } else {
-      tagLine = keywords.total === 1 ? '' : `, ${keywords.secondKey}`
+      tagLine = keywords.total <= 1 ? '' : `, ${keywords.popular.shift()}`
     }
     document.querySelector(config.words.second).textContent = tagLine
     document.querySelector(config.words.tail).style.display = keywords.total > 3 ? 'auto' : 'none'

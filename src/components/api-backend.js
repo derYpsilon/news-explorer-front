@@ -27,12 +27,14 @@ const regCompleteForm = new AuthForm(
   '#login-form',
 )
 
-class Explorer {
+class ApiBackend {
   constructor() {
-    this.userMenuHandler = () => loginForm.open()
-    this.menuCustomizer()
-    this._callExt = null
+    this._userMenuHandler = () => loginForm.open()
     this.updateView = new Event('updateView', { bubbles: true })
+  }
+
+  init() {
+    this._menuCustomizer()
   }
 
   // eslint-disable-next-line class-methods-use-this
@@ -44,18 +46,18 @@ class Explorer {
     return Boolean(this.userName)
   }
 
-  menuCustomizer() {
+  _menuCustomizer() {
     const shownName = document.querySelector('#shown-user-name')
     if (!this.userName) {
       if (document.location.pathname === '/articles/') document.location.href = '../'
       shownName.textContent = 'Авторизуйтесь'
-      shownName.addEventListener('click', this.userMenuHandler)
+      shownName.addEventListener('click', this._userMenuHandler)
       shownName.parentNode.querySelector('.menu__logout').style.display = 'none'
       document.querySelector('#menu-saved-articles').style.display = 'none'
     } else {
       shownName.textContent = this.userName
       shownName.parentNode.querySelector('.menu__logout').style.display = 'inline-block'
-      shownName.removeEventListener('click', this.userMenuHandler)
+      shownName.removeEventListener('click', this._userMenuHandler)
       shownName.addEventListener('click', () => this.logout())
       document.querySelector('#menu-saved-articles').style.display = 'flex'
     }
@@ -77,7 +79,7 @@ class Explorer {
       })
       .then(() => {
         localStorage.clear()
-        this.menuCustomizer()
+        this._menuCustomizer()
         document.dispatchEvent(this.updateView)
       })
       .catch((e) => console.log(e.message))
@@ -108,7 +110,7 @@ class Explorer {
             localStorage.setItem('user', userInfo.user)
             loginForm.enableSubmitButton()
             loginForm.close()
-            this.menuCustomizer()
+            this._menuCustomizer()
             document.dispatchEvent(this.updateView)
           })
           .catch((e) => console.log(e.message))
@@ -208,7 +210,8 @@ class Explorer {
   }
 }
 
-const apiEx = new Explorer()
+const apiEx = new ApiBackend()
+apiEx.init()
 loginForm.callExt = apiEx.login.bind(apiEx)
 signupForm.callExt = apiEx.signUp.bind(apiEx)
 

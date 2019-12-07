@@ -3,12 +3,13 @@ import '../../vendor/normalize.css'
 import '../../../node_modules/swiper/css/swiper.min.css'
 import './index.css'
 import Swiper from 'swiper'
+import config from '../../components/config'
 import { menuOperator, mainMenu } from '../../blocks/menu/menu'
 import modalOperator from '../../blocks/common/modaloperator'
-import apiEx from '../../components/api-explorer'
-import CommitLoader from '../../components/commit-loader'
+import apiEx from '../../components/api-backend'
+import CommitsLoader from '../../components/commits-loader'
+import CommitsRender from '../../components/commits-render'
 
-// Methods
 const swiper = new Swiper('.swiper-container', {
   updateOnWindowResize: true,
   slidesPerView: 3,
@@ -42,7 +43,14 @@ const swiper = new Swiper('.swiper-container', {
   },
 })
 
-const commits = new CommitLoader(swiper.update.bind(swiper))
+const commitsLoader = new CommitsLoader(config.git, config.maxGitCommits)
+const commitsRender = new CommitsRender(
+  swiper.update.bind(swiper),
+  commitsLoader.getCommits.bind(commitsLoader),
+  config,
+)
+
+commitsRender.init()
 
 window.onresize = () => {
   if (window.innerWidth > 767) mainMenu.close()

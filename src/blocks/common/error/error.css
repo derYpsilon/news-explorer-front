@@ -1,6 +1,8 @@
 .sys-error {
   display: none;
-  max-width: 300px;
+  position: relative;
+  max-width: 280px;
+  min-width: 280px;
 }
 .sys-error_on {
   z-index: 300;
@@ -10,13 +12,13 @@
   left: 50%;
   transform: translate(-50%, -50%);
   background: rebeccapurple;
-  padding: 20px;
+  padding: 30px;
   border-radius: 16px;
   color: white;
   cursor: pointer;
   font-size: 0.87rem;
   text-align: center;
-  border: 2px solid grey;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
 }
 
 .sys-error__message {
@@ -33,4 +35,19 @@
   margin-top: 10px;
   font-size: 0.75rem;
   font-weight: normal;
+}
+
+.sys-error__close {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  top: -20px;
+  right: -20px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-image: url(../../../images/close_white.svg);
+  cursor: pointer;
+  background-color: rebeccapurple;
+  border-radius: 50%;
 }

@@ -11,14 +11,14 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background: rebeccapurple;
+  background: #c13335;
   padding: 30px;
   border-radius: 16px;
   color: white;
   cursor: pointer;
   font-size: 0.87rem;
   text-align: center;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+  box-shadow: 0 0 30px rgba(0, 0, 0, 1);
 }
 
 .sys-error__message {
@@ -41,13 +41,13 @@
   position: absolute;
   width: 40px;
   height: 40px;
-  top: -20px;
-  right: -20px;
+  top: -15px;
+  right: -15px;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
   background-image: url(../../../images/close_white.svg);
   cursor: pointer;
-  background-color: rebeccapurple;
+  background-color: #c13335;
   border-radius: 50%;
 }

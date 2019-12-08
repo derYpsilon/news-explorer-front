@@ -1,12 +1,11 @@
 export default class NewsRender {
   constructor(
-    getNews, isLogged, saveArticle, deleteArticle, showError,
+    getNews, saveArticle, deleteArticle, showError,
     {
       cardSample, results, card, month,
     },
   ) {
     this.getNews = getNews
-    this.isLogged = isLogged
     this.saveArticle = saveArticle
     this.deleteArticle = deleteArticle
     this.showError = showError
@@ -29,6 +28,11 @@ export default class NewsRender {
     this._showMore.addEventListener('click', () => this.renderCards())
     this._resultsField.addEventListener('click', (event) => this.cardHandler(event))
     document.addEventListener('updateView', () => this.patchRender())
+  }
+
+  // eslint-disable-next-line class-methods-use-this
+  isLogged() {
+    return Boolean(localStorage.getItem('user'))
   }
 
   buildCard(data) {
@@ -91,7 +95,6 @@ export default class NewsRender {
           this.renderCards()
           this._resultsSection.classList.remove(this._cfg.resultsSection.hide)
         }
-        this.patchRender()
       })
       .catch((err) => {
         console.log(err.message)
@@ -109,8 +112,8 @@ export default class NewsRender {
           item.querySelector(this._card.icon.node).classList.add(this._card.icon.logged)
         } else {
           item.querySelector(this._card.icon.node).classList.remove(this._card.icon.logged)
+          item.querySelector(this._card.icon.node).classList.remove(this._card.icon.marked)
         }
-        item.querySelector(this._card.icon.node).classList.remove(this._card.icon.marked)
       },
     )
   }

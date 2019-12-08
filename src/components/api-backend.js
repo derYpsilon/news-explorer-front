@@ -1,70 +1,19 @@
-//
-//   _____     _    _____         _
-//  |  _  |___|_|  |   __|_ _ ___| |___ ___ ___ ___
-//  |     | . | |  |   __|_'_| . | | . |  _| -_|  _|
-//  |__|__|  _|_|  |_____|_,_|  _|_|___|_| |___|_|
-//        |_|                |_|
-//
-
 /* eslint-disable no-unused-vars */
 /* eslint-disable class-methods-use-this */
 
-import AuthForm from '../blocks/common/auth-form/auth-form'
-import config from './config'
-
-const loginForm = new AuthForm(
-  document.querySelector('#login-form'),
-  '#signup-form',
-)
-
-const signupForm = new AuthForm(
-  document.querySelector('#signup-form'),
-  '#login-form',
-)
-
-const regCompleteForm = new AuthForm(
-  document.querySelector('#signup-ok'),
-  '#login-form',
-)
-
-class ApiBackend {
-  constructor() {
-    this._userMenuHandler = () => loginForm.open()
-    this.updateView = new Event('updateView', { bubbles: true })
-  }
-
-  init() {
-    this._menuCustomizer()
-  }
-
-  // eslint-disable-next-line class-methods-use-this
-  get userName() {
-    return localStorage.getItem('user')
-  }
-
-  isLogged() {
-    return Boolean(this.userName)
-  }
-
-  _menuCustomizer() {
-    const shownName = document.querySelector('#shown-user-name')
-    if (!this.userName) {
-      if (document.location.pathname === '/articles/') document.location.href = '../'
-      shownName.textContent = 'Авторизуйтесь'
-      shownName.addEventListener('click', this._userMenuHandler)
-      shownName.parentNode.querySelector('.menu__logout').style.display = 'none'
-      document.querySelector('#menu-saved-articles').style.display = 'none'
-    } else {
-      shownName.textContent = this.userName
-      shownName.parentNode.querySelector('.menu__logout').style.display = 'inline-block'
-      shownName.removeEventListener('click', this._userMenuHandler)
-      shownName.addEventListener('click', () => this.logout())
-      document.querySelector('#menu-saved-articles').style.display = 'flex'
-    }
+export default class ApiBackend {
+  constructor({
+    login, signup, logout, getUser, articles,
+  }) {
+    this._login = login
+    this._signup = signup
+    this._logout = logout
+    this._getUser = getUser
+    this._articles = articles
   }
 
   logout() {
-    fetch(config.logout,
+    return fetch(this._logout,
       {
         method: 'POST',
         headers: {
@@ -74,19 +23,20 @@ class ApiBackend {
         credentials: 'include',
       })
       .then((res) => {
-        if (!res.ok) throw new Error(`Ошибка выхода ${res.status}`)
+        if (!res.ok) throw new Error(`Ошибка выхода: ${res.status}`)
         return res.json()
       })
       .then(() => {
         localStorage.clear()
-        this._menuCustomizer()
-        document.dispatchEvent(this.updateView)
+        return Promise.resolve()
       })
-      .catch((e) => console.log(e.message))
+      .catch((e) => {
+        throw new Error(e.message)
+      })
   }
 
   login(data) {
-    return fetch(config.login,
+    return fetch(this._login,
       {
         method: 'POST',
         headers: {
@@ -97,23 +47,8 @@ class ApiBackend {
         body: JSON.stringify(data),
       })
       .then((res) => {
-        if (!res.ok) throw new Error(`Ошибка авторизации ${res.status}`)
+        if (!res.ok) throw new Error(res.status)
         return res.json()
-      })
-      .then((answer) => {
-        fetch(config.getUser, { credentials: 'include' })
-          .then((res) => {
-            if (!res.ok) throw new Error(`Ошибка чтения ${res.status}`)
-            return res.json()
-          })
-          .then((userInfo) => {
-            localStorage.setItem('user', userInfo.user)
-            loginForm.enableSubmitButton()
-            loginForm.close()
-            this._menuCustomizer()
-            document.dispatchEvent(this.updateView)
-          })
-          .catch((e) => console.log(e.message))
       })
       .catch((err) => {
         console.log(err.message)
@@ -121,8 +56,20 @@ class ApiBackend {
       })
   }
 
+  getUserName() {
+    return fetch(this._getUser, { credentials: 'include' })
+      .then((res) => {
+        if (!res.ok) throw new Error(`Ошибка чтения ${res.status}`)
+        return res.json()
+      })
+      .then((userInfo) => userInfo.user)
+      .catch((err) => {
+        throw new Error(err.message)
+      })
+  }
+
   signUp(data) {
-    return fetch(config.signup,
+    return fetch(this._signup,
       {
         method: 'POST',
         headers: {
@@ -133,13 +80,11 @@ class ApiBackend {
         body: JSON.stringify(data),
       })
       .then((res) => {
-        if (!res.ok) throw new Error(`Ошибка ${res.status} -- ${res.text()}`)
+        if (!res.ok) {
+          console.log(res.status)
+          throw new Error(res.status)
+        }
         return res.json()
-      })
-      .then(() => {
-        signupForm.close()
-        regCompleteForm.open()
-        return Promise.resolve()
       })
       .catch((err) => {
         console.log(err.message)
@@ -148,7 +93,7 @@ class ApiBackend {
   }
 
   saveArticle(data) {
-    return fetch(config.articles,
+    return fetch(this._articles,
       {
         method: 'POST',
         headers: {
@@ -170,7 +115,7 @@ class ApiBackend {
   }
 
   deleteArticle(id) {
-    return fetch(`${config.articles}/${id}`,
+    return fetch(`${this._articles}/${id}`,
       {
         method: 'DELETE',
         headers: {
@@ -190,7 +135,7 @@ class ApiBackend {
   }
 
   getAllArticles() {
-    return fetch(config.articles,
+    return fetch(this._articles,
       {
         method: 'GET',
         headers: {
@@ -209,10 +154,3 @@ class ApiBackend {
       })
   }
 }
-
-const apiEx = new ApiBackend()
-apiEx.init()
-loginForm.callExt = apiEx.login.bind(apiEx)
-signupForm.callExt = apiEx.signUp.bind(apiEx)
-
-export default apiEx

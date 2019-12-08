@@ -84,7 +84,7 @@
   </div>
   <!-- Сервисная часть с оверлеем и формами -->
   <div id="service-area">
-    <section class="auth-form__wrapper auth-form__wrapper_hide" id="login-form">
+    <section class="service-wrapper service-wrapper_hide" id="login-form">
       <form class="auth-form" name="login">
         <div class="auth-form__close" id="close-login-form"></div>
         <h4 class="auth-form__title">Вход</h4>
@@ -110,7 +110,7 @@
       </form>
     </section>
 
-    <section class="auth-form__wrapper auth-form__wrapper_hide" id="signup-form">
+    <section class="service-wrapper service-wrapper_hide" id="signup-form">
       <form class="auth-form" name="signup">
         <div class="auth-form__close" id="close-signup-form"></div>
         <h4 class="auth-form__title">Регистрация</h4>
@@ -141,7 +141,7 @@
       </form>
     </section>
 
-    <section class="auth-form__wrapper auth-form__wrapper_hide" id="signup-ok">
+    <section class="service-wrapper service-wrapper_hide" id="signup-ok">
       <form class="auth-form" name="it-is-ok">
         <div class="auth-form__close" id="close-signup-ok-form"></div>
         <h4 class="auth-form__title">Пользователь успешно зарегистрирован!</h4>
@@ -153,8 +153,8 @@
     <!-- add class "overlay_on" to show overlay -->
     <div class="overlay"></div>
     <div class="sys-error" id="system-error">
+      <div class="sys-error__close"></div>
       <p class="sys-error__message" id="system-error-message"></p>
-      <p class="sys-error__message sys-error__message_sub">Нажмите чтобы закрыть</p>
     </div>
   </div>
   <script src="<%= htmlWebpackPlugin.files.chunks.articles.entry %>"></script>

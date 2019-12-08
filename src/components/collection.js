@@ -1,15 +1,14 @@
+/* eslint-disable class-methods-use-this */
 export default class Collection {
-  constructor(isLogged, getAllArticles, deleteArticle, userName,
+  constructor(getAllArticles, deleteArticle,
     {
       cardSample, collection, card, month,
     }, showError) {
     this._cfg = collection
     this._month = month
     this._card = card
-    this.isLogged = isLogged
     this.getAllArticles = getAllArticles
     this.deleteArticle = deleteArticle
-    this.userName = userName
     this.cardTemplate = document.querySelector(cardSample).content
     this.collectionContainer = document.querySelector(this._cfg.collectionContainer)
     this.articlesQty = document.querySelector(this._cfg.articlesQty)
@@ -21,11 +20,19 @@ export default class Collection {
     this.render()
   }
 
+  isLogged() {
+    return Boolean(this.userName())
+  }
+
+  userName() {
+    return localStorage.getItem('user')
+  }
+
   render() {
     if (!this.isLogged) return
     this.getAllArticles()
       .then((res) => {
-        this.articlesHeader.insertAdjacentText('afterbegin', this.userName)
+        this.articlesHeader.insertAdjacentText('afterbegin', this.userName())
         Array.from(res).forEach((item) => {
           this.stats[item._id] = item.keyword
           // eslint-disable-next-line no-param-reassign

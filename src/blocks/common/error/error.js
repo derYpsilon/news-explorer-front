@@ -9,13 +9,11 @@ export default class ShowError {
 
   show(message) {
     this.errorMessage.textContent = message
-    document.body.classList.add('body-noscroll')
     this.domElement.classList.add('sys-error_on')
   }
 
   hide() {
     this.errorMessage.textContent = ''
-    document.body.classList.remove('body-noscroll')
     this.domElement.classList.remove('sys-error_on')
   }
 }

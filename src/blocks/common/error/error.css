@@ -1,8 +1,8 @@
 .sys-error {
   display: none;
   position: relative;
-  max-width: 280px;
-  min-width: 280px;
+  max-width: 230px;
+  min-width: 230px;
 }
 .sys-error_on {
   z-index: 300;
@@ -12,7 +12,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
   background: #c13335;
-  padding: 30px;
+  padding: 20px;
   border-radius: 16px;
   color: white;
   cursor: pointer;

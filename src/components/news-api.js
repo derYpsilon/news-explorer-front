@@ -1,6 +1,6 @@
 export default class NewsApi {
   constructor(newsFeed) {
-    this._newsFeed = newsFeed
+    this.newsFeed = newsFeed
     this._news = []
   }
 
@@ -10,7 +10,7 @@ export default class NewsApi {
     const dateWeekAgo = new Date(dateNow - sevenDays)
     const dateTo = `${dateNow.getFullYear()}-${dateNow.getMonth() + 1}-${dateNow.getDate()}`
     const dateFrom = `${dateWeekAgo.getFullYear()}-${dateWeekAgo.getMonth() + 1}-${dateWeekAgo.getDate()}`
-    const url = `${this._newsFeed}&q=${query}&from=${dateFrom}&to=${dateTo}`
+    const url = `${this.newsFeed}&q=${query}&from=${dateFrom}&to=${dateTo}`
     return fetch(url)
       .then((res) => {
         if (!res.ok) throw new Error('Can not read news feed')

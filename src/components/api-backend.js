@@ -51,7 +51,6 @@ export default class ApiBackend {
         return res.json()
       })
       .catch((err) => {
-        console.log(err.message)
         throw new Error(err.message)
       })
   }
@@ -81,13 +80,11 @@ export default class ApiBackend {
       })
       .then((res) => {
         if (!res.ok) {
-          console.log(res.status)
           throw new Error(res.status)
         }
         return res.json()
       })
       .catch((err) => {
-        console.log(err.message)
         throw new Error(err.message)
       })
   }
@@ -109,7 +106,6 @@ export default class ApiBackend {
       })
       .then((res) => res._id)
       .catch((err) => {
-        console.log(err.message)
         throw new Error(err.message)
       })
   }
@@ -129,7 +125,6 @@ export default class ApiBackend {
         return res.json()
       })
       .catch((err) => {
-        console.log(err.message)
         throw new Error(err.message)
       })
   }
@@ -149,7 +144,6 @@ export default class ApiBackend {
         return res.json()
       })
       .catch((err) => {
-        console.log(err.message)
         throw new Error(err.message)
       })
   }

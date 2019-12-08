@@ -1,19 +1,19 @@
 export default class CommitsLoader {
   constructor(url, maxGitCommits = 5) {
     this._commits = []
-    this._gitURL = url
-    this._maxGitCommits = maxGitCommits
+    this.gitURL = url
+    this.maxGitCommits = maxGitCommits
   }
 
   getCommits() {
-    return fetch(this._gitURL)
+    return fetch(this.gitURL)
       .then((res) => {
         if (!res.ok) throw new Error(`Ошибка чтения из Git -- ${res.status}`)
         return res.json()
       })
       .then((data) => {
         const total = Array.from(Object.keys(data)).length
-        const commitsQty = total < this._maxGitCommits ? total : this._maxGitCommits
+        const commitsQty = total < this.maxGitCommits ? total : this.maxGitCommits
         for (let key = 0; key < commitsQty; key += 1) {
           this._commits.push({
             name: data[key].commit.committer.name,

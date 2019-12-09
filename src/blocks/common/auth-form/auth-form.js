@@ -114,11 +114,11 @@ export default class AuthForm {
 
   open() {
     this.domElement.classList.remove('service-wrapper_hide')
-    document.body.classList.add('body-noscroll')
+    document.querySelector('#scroll').classList.add('body-noscroll')
   }
 
   close() {
-    document.body.classList.remove('body-noscroll')
+    document.querySelector('#scroll').classList.remove('body-noscroll')
     this.domElement.classList.add('service-wrapper_hide')
   }
 

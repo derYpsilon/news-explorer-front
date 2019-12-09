@@ -3,6 +3,7 @@ import './index.css'
 import config from '../../components/config'
 /* eslint-disable no-unused-vars */
 import { menuOperator, mainMenu } from '../../blocks/menu/menu'
+import modalOperator from '../../blocks/common/modaloperator'
 import AuthForm from '../../blocks/common/auth-form/auth-form'
 import ApiBackend from '../../components/api-backend'
 import MainMenuRender from '../../components/main-menu-render'

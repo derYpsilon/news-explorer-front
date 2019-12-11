@@ -3,7 +3,7 @@ import './vendor/normalize.css'
 import './index.css'
 import config from './components/config'
 import { menuOperator, mainMenu } from './blocks/menu/menu'
-import modalOperator from './blocks/common/modaloperator'
+import ModalOperator from './blocks/common/modaloperator'
 import AuthForm from './blocks/common/auth-form/auth-form'
 import ShowError from './blocks/common/error/error'
 import ApiBackend from './components/api-backend'
@@ -11,6 +11,7 @@ import NewsApi from './components/news-api'
 import NewsRender from './components/news-render'
 import MainMenuRender from './components/main-menu-render'
 
+const modalOperator = new ModalOperator(document.body, document.querySelector('#scroll'))
 const showError = new ShowError()
 const apiBackend = new ApiBackend(config)
 

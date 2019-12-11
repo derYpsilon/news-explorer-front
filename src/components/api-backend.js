@@ -97,7 +97,7 @@ export default class ApiBackend {
         body: JSON.stringify(data),
       })
       .then((res) => {
-        if (!res.ok) throw new Error(`Ошибка сохранения карточки ${res.status}}`)
+        if (!res.ok) throw new Error(`Ошибка сохранения карточки ${res.status}`)
         return res.json()
       })
       .then((res) => res._id)

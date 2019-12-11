@@ -5,7 +5,7 @@ import './index.css'
 import Swiper from 'swiper'
 import config from '../../components/config'
 import { menuOperator, mainMenu } from '../../blocks/menu/menu'
-import modalOperator from '../../blocks/common/modaloperator'
+import ModalOperator from '../../blocks/common/modaloperator'
 import AuthForm from '../../blocks/common/auth-form/auth-form'
 import ShowError from '../../blocks/common/error/error'
 import ApiBackend from '../../components/api-backend'
@@ -13,6 +13,7 @@ import MainMenuRender from '../../components/main-menu-render'
 import CommitsLoader from '../../components/commits-loader'
 import CommitsRender from '../../components/commits-render'
 
+const modalOperator = new ModalOperator(document.body, document.querySelector('#scroll'))
 const showError = new ShowError()
 const apiBackend = new ApiBackend(config)
 

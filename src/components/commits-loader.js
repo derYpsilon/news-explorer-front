@@ -1,6 +1,5 @@
 export default class CommitsLoader {
   constructor(url, maxGitCommits = 5) {
-    this._commits = []
     this.gitURL = url
     this.maxGitCommits = maxGitCommits
   }
@@ -12,10 +11,11 @@ export default class CommitsLoader {
         return res.json()
       })
       .then((data) => {
+        const commits = []
         const total = Array.from(Object.keys(data)).length
         const commitsQty = total < this.maxGitCommits ? total : this.maxGitCommits
         for (let key = 0; key < commitsQty; key += 1) {
-          this._commits.push({
+          commits.push({
             name: data[key].commit.committer.name,
             email: data[key].commit.committer.email,
             date: new Date(Date.parse(data[key].commit.committer.date)),
@@ -23,7 +23,7 @@ export default class CommitsLoader {
             avatar: data[key].author.avatar_url,
           })
         }
-        return this._commits
+        return commits
       })
       .catch((err) => {
         throw new Error(err.message)

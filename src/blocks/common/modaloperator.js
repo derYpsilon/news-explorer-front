@@ -1,6 +1,6 @@
 import './scroll-lock.css'
 
-class ModalHelper {
+export default class ModalOperator {
   constructor(kbdElement, clickElement) {
     this.kbdElement = kbdElement
     this.clickElement = clickElement
@@ -30,7 +30,3 @@ class ModalHelper {
     }
   }
 }
-
-const modalOperator = new ModalHelper(document.body, document.querySelector('#scroll'))
-
-export default modalOperator

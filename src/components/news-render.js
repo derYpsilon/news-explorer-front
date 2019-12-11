@@ -17,6 +17,7 @@ export default class NewsRender {
     this._resultsField = document.querySelector(results.resultsField)
     this._submit = document.querySelector(results.newsForm)
     this._searchString = document.querySelector(results.newsFormSearchField)
+    this._searchButton = document.querySelector(results.newsFormButton)
     this._showMore = document.querySelector(results.showMore.node)
     this._preloader = document.querySelector(results.preloader.node)
     this._notFound = document.querySelector(results.notFound.node)
@@ -48,6 +49,16 @@ export default class NewsRender {
     if (this._isLogged()) container.querySelector(this.card.icon.node).classList.add(this.card.icon.logged)
     container.querySelector(this.card.icon.node).setAttribute('cardID', this._currentPos)
     return container
+  }
+
+  _blockForm() {
+    this._searchString.setAttribute('disabled', true)
+    this._searchButton.setAttribute('disabled', true)
+  }
+
+  _unblockForm() {
+    this._searchString.removeAttribute('disabled', true)
+    this._searchButton.removeAttribute('disabled', true)
   }
 
   _renderCards() {
@@ -85,6 +96,7 @@ export default class NewsRender {
     if (this._news.length !== 0) {
       this._clearResultsList()
     }
+    this._blockForm()
     this.getNews(key)
       .then((data) => {
         this._news = data
@@ -92,6 +104,7 @@ export default class NewsRender {
         if (data.length === 0) {
           this._notFound.classList.remove(this.cfg.notFound.hide)
         } else {
+          this._unblockForm()
           this._renderCards()
           this._resultsSection.classList.remove(this.cfg.resultsSection.hide)
         }
@@ -101,6 +114,7 @@ export default class NewsRender {
         this._notFound.classList.add(this.cfg.notFound.hide)
         this._preloader.classList.add(this.cfg.notFound.hide)
         this._serverError.classList.remove(this.cfg.serverError.hide)
+        this._unblockForm()
         this.showError.show(err.message)
       })
   }

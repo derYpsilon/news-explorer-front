@@ -1,7 +1,6 @@
 export default class NewsApi {
   constructor(newsFeed) {
     this.newsFeed = newsFeed
-    this._news = []
   }
 
   getNews(query) {
@@ -17,8 +16,9 @@ export default class NewsApi {
         return res.json()
       })
       .then((data) => {
+        const news = []
         for (let i = 0; i < data.articles.length; i += 1) {
-          this._news.push({
+          news.push({
             source: data.articles[i].source.name,
             title: data.articles[i].title,
             date: new Date(Date.parse(data.articles[i].publishedAt)),
@@ -28,7 +28,7 @@ export default class NewsApi {
             keyword: query,
           })
         }
-        return this._news
+        return news
       })
       .catch((err) => {
         throw new Error(err.message)

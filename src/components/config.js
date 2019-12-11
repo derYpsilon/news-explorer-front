@@ -16,6 +16,7 @@ const config = {
     resultsField: '.results__news',
     newsForm: '.header__form',
     newsFormSearchField: '.header__form-input',
+    newsFormButton: '#search-the-news',
     preloader: { node: '#preloader-searching', hide: 'preloader__message_hide' },
     notFound: { node: '#preloader-not-found', hide: 'preloader__message_hide' },
     serverError: { node: '#preloader-server-error', hide: 'preloader__message_hide' },

@@ -42,10 +42,10 @@ export default class MainMenuRender {
   _logout() {
     this.logoutHandler()
       .then(() => {
-        document.dispatchEvent(this._updateView)
         // eslint-disable-next-line no-unused-expressions
         localStorage && localStorage.clear()
         this._renderMenu()
+        document.dispatchEvent(this._updateView)
       })
       .catch((err) => {
         this.showError.show(err.message)

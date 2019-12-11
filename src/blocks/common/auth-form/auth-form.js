@@ -87,7 +87,8 @@ export default class AuthForm {
           this.enableInputs()
           this.getUser()
             .then((res) => {
-              localStorage.setItem('user', res)
+              // eslint-disable-next-line no-unused-expressions
+              localStorage && localStorage.setItem('user', res)
               document.dispatchEvent(this._updateView)
               document.dispatchEvent(this._updateMenu)
             })

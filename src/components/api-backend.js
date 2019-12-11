@@ -26,10 +26,6 @@ export default class ApiBackend {
         if (!res.ok) throw new Error(`Ошибка выхода: ${res.status}`)
         return res.json()
       })
-      .then(() => {
-        localStorage.clear()
-        return Promise.resolve()
-      })
       .catch((e) => {
         throw new Error(e.message)
       })

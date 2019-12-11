@@ -3,8 +3,7 @@ export default class MainMenuRender {
     this.loginHandler = loginFormOpen
     this.logoutHandler = logout
     this.showError = showError
-    this._out = this._logout.bind(this)
-    this._in = this._login.bind(this)
+    this._userArea = document.querySelector('#user-area')
     this._shownName = document.querySelector('#shown-user-name')
     this._menuLogout = this._shownName.parentNode.querySelector('.menu__logout')
     this._savedArticles = document.querySelector('#menu-saved-articles')
@@ -14,23 +13,29 @@ export default class MainMenuRender {
   init() {
     this._renderMenu()
     document.addEventListener('updateMenu', this._renderMenu.bind(this))
+    this._userArea.addEventListener('click', () => this._onClick())
   }
 
   _renderMenu() {
-    const user = localStorage.getItem('user')
+    const user = localStorage && localStorage.getItem('user')
     if (!user) {
       if (document.location.pathname === '/articles/') document.location.href = '../'
       this._shownName.textContent = 'Авторизуйтесь'
-      this._shownName.removeEventListener('click', this._out)
-      this._shownName.addEventListener('click', this._in)
       this._menuLogout.style.display = 'none'
       this._savedArticles.style.display = 'none'
     } else {
       this._shownName.textContent = user
       this._menuLogout.style.display = 'inline-block'
-      this._shownName.removeEventListener('click', this._in)
-      this._shownName.addEventListener('click', this._out)
       this._savedArticles.style.display = 'flex'
+    }
+  }
+
+  _onClick() {
+    const user = localStorage && localStorage.getItem('user')
+    if (user) {
+      this._logout()
+    } else {
+      this._login()
     }
   }
 
@@ -38,7 +43,8 @@ export default class MainMenuRender {
     this.logoutHandler()
       .then(() => {
         document.dispatchEvent(this._updateView)
-        this._shownName.removeEventListener('click', this._out)
+        // eslint-disable-next-line no-unused-expressions
+        localStorage && localStorage.clear()
         this._renderMenu()
       })
       .catch((err) => {

@@ -7,6 +7,10 @@
   box-shadow: none;
 }
 
+.button.results__button.results__button_hide {
+  display: none;
+}
+
 .button.results__button:active {
   background-color: #e8e8e9;
 }

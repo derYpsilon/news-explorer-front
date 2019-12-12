@@ -1,14 +1,16 @@
+/* eslint-disable no-unused-vars */
 import '../../vendor/normalize.css'
 import '../../../node_modules/swiper/css/swiper.min.css'
 import './index.css'
-/* eslint-disable no-unused-vars */
 import Swiper from 'swiper'
+import config from '../../components/config'
 import { menuOperator, mainMenu } from '../../blocks/menu/menu'
-import modalOperator from '../../blocks/common/modaloperator'
-import Card from '../../blocks/common/card/card'
-import { loginForm, signupForm, regCompleteForm } from '../../blocks/common/auth-form/auth-form'
+import initUI from '../../components/setup'
+import CommitsLoader from '../../components/commits-loader'
+import CommitsRender from '../../components/commits-render'
 
-// Methods
+const pageUI = initUI()
+
 const swiper = new Swiper('.swiper-container', {
   updateOnWindowResize: true,
   slidesPerView: 3,
@@ -41,6 +43,15 @@ const swiper = new Swiper('.swiper-container', {
     prevEl: '.swiper-button-prev',
   },
 })
+
+const commitsLoader = new CommitsLoader(config.git, config.maxGitCommits)
+const commitsRender = new CommitsRender(
+  swiper.update.bind(swiper),
+  commitsLoader.getCommits.bind(commitsLoader),
+  config,
+)
+
+commitsRender.init()
 
 window.onresize = () => {
   if (window.innerWidth > 767) mainMenu.close()

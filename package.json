@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "build": "rimraf dist && webpack --mode production",
-    "dev": "NODE_ENV=development webpack-dev-server --mode development --open --watch",
-    "deploy": "scp -r ./dist/* ypsilon@84.201.157.221:/home/ypsilon/front",
+    "dev": "webpack-dev-server --mode development --open --watch",
+    "deploy": "scp -r ./dist/* ypsilon@130.193.36.200:/home/ypsilon/front",
     "pages": "gh-pages -d dist"
   },
   "author": "Alexey Tsitskun",
@@ -38,8 +38,7 @@
     "babel-polyfill": "6.26.0",
     "core-js": "3.1.4",
     "cssnano": "4.1.10",
-    "swiper": "5.2.1",
-    "validator": "11.1.0"
+    "swiper": "5.2.1"
   },
   "repository": {
     "type": "git",

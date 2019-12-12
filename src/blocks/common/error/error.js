@@ -4,7 +4,8 @@ export default class ShowError {
   constructor() {
     this.domElement = document.querySelector('#system-error')
     this.errorMessage = document.querySelector('#system-error-message')
-    this.domElement.addEventListener('click', () => this.hide())
+    document.addEventListener('click', () => this._onClick())
+    document.addEventListener('keydown', (event) => this._onKey(event))
   }
 
   show(message) {
@@ -15,5 +16,19 @@ export default class ShowError {
   hide() {
     this.errorMessage.textContent = ''
     this.domElement.classList.remove('sys-error_on')
+  }
+
+  _onKey(event) {
+    if (event.code === 'Escape') {
+      if (Array.from(this.domElement.classList).includes('sys-error_on')) {
+        this.hide()
+      }
+    }
+  }
+
+  _onClick() {
+    if (Array.from(this.domElement.classList).includes('sys-error_on')) {
+      this.hide()
+    }
   }
 }

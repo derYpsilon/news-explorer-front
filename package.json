@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "rimraf dist && webpack --mode production",
-    "dev": "NODE_ENV=development webpack-dev-server --mode development --open --watch",
+    "dev": "webpack-dev-server --mode development --open --watch",
     "deploy": "scp -r ./dist/* ypsilon@130.193.36.200:/home/ypsilon/front",
     "pages": "gh-pages -d dist"
   },

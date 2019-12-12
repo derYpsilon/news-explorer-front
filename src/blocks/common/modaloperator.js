@@ -6,7 +6,7 @@ export default class ModalOperator {
     this.clickElement = clickElement
     this.modals = Array.from(this.kbdElement.querySelectorAll('.service-wrapper'))
     this.kbdElement.addEventListener('keydown', (event) => this.onKey(event))
-    this.clickElement.addEventListener('click', (event) => this.onClick(event))
+    this.clickElement.addEventListener('mousedown', (event) => this.onClick(event))
   }
 
   onKey(event) {

@@ -104,10 +104,10 @@ export default class NewsRender {
         if (data.length === 0) {
           this._notFound.classList.remove(this.cfg.notFound.hide)
         } else {
-          this._unblockForm()
           this._renderCards()
           this._resultsSection.classList.remove(this.cfg.resultsSection.hide)
         }
+        this._unblockForm()
       })
       .catch((err) => {
         console.log(err.message)

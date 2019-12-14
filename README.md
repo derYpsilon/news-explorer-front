@@ -1,4 +1,4 @@
-# News-Explorer Frontend part
+# News-Explorer Frontend
 
 ## Фронтенд для дипломной работы Яндекс.Практикум
 
